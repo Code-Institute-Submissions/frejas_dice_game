@@ -29,3 +29,10 @@ $('.dice').click(function() {
     console.log(dice);
 
 });
+
+
+
+/*Mondal open on page ready*/
+$(document).ready(function() {
+    $("#introMondal").modal('show')
+});

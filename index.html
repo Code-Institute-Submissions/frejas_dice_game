@@ -19,7 +19,76 @@
 </header>
 
 <body>
+
+
     <div class="main">
+        <!--Welcome mondal-->
+        <div class="modal" tabindex="1" role="dialog" id="introMondal">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Freja's Dice Game</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Welcome to Freja's Dice Game!</p>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="welcomePage">
+                            <!--Welcome Message-->
+                            <p>A simple dice game where the highest roll wins!</p>
+                            <p>Although the second player can choose a different die and you can only use the die once per game!</p>
+                            <p>Choose the your dice carefully!</p>
+                        </div>
+
+                        <div class="playerVcomputer">
+                            <!--Choice of player v player or aginst the computer-->
+                            <div class="row">
+                                <button type="button" class="btn btn-primary" id="playerVplayer">
+                                    <h5> Player V Player</h3>
+                                </button>
+
+                                <button type="button" class="btn btn-primary" id="playerVcomputer">
+                                        <h5> Player V Computer</h3>
+                                    </button>
+                            </div>
+                        </div>
+
+                        <div class="playerInformation">
+                            <!--Player Info, colour choice and help option-->
+                            <form action="/action_page.php">
+                                <!--Player 0-->
+                                <label for="player-0-name">First Player Name</label>
+
+                                <br>
+                                <input type="text" id="player-0-name" name="player1" placeholder="Player 1">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="helpSwitch-Player-0" checked="">
+                                    <label class="custom-control-label" for="customSwitch1">Help Tool</label>
+                                </div>
+                                <br>
+
+                                <!--Player 1-->
+                                <label for="player-1-name">Second Player Name</label>
+                                <br>
+                                <input type="text" id="player-1-name" name="player2" placeholder="Player 2">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="helpSwitch-Player-1" checked="">
+                                    <label class="custom-control-label" for="customSwitch1">Help Tool</label>
+                                </div>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Start</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <br>
         <div class="row ">
             <!--Table Area-->
@@ -54,21 +123,47 @@
                 <!--History of moves-->
                 <div class="history">
                     <h1>History</h1>
-                    <div class="row history-game">
-                        <div class="col-2 dice-history">
-                            <h4>1 :</h4>
+                    <br>
+                    <div class="row histroy-row">
+
+                        <!--Round counter-->
+                        <div class="col-3 round-counter">
+                            <h4>1:</h4>
                         </div>
-                        <div class="col-5 dice-history">
-                            <button class="diceHistory" id="d8" value="8"><img src="static\dice_img\d-8.jpg"/><h3>10</h3></button>
+                        <!--Player 0 score and used dice-->
+                        <div class="col dice-history">
+                            <button class="diceHistory" id="d8" value="8"><img src="static\dice_img\d-8.jpg"/></button>
+                            <h3>6</h3>
 
                         </div>
-                        <div class="col-5 dice-history">
-                            <button class="diceHistory" id="d20" value="20"><img src="static\dice_img\d-20.jpg"/><h3>12</h3></button>
-
+                        <!--Player 1 score and used dice-->
+                        <div class="col dice-history">
+                            <button class="diceHistory" id="d20" value="20"><img src="static\dice_img\d-20.jpg"/></button>
+                            <h3>9</h3>
                         </div>
+
                     </div>
+                    <div class="row histroy-row">
+
+                        <!--Round counter-->
+                        <div class="col-3 round-counter">
+                            <h4>2:</h4>
+                        </div>
+                        <!--Player 0 score and used dice-->
+                        <div class="col dice-history">
+                            <h3>-</h3>
+
+                        </div>
+                        <!--Player 1 score and used dice-->
+                        <div class="col dice-history">
+                            <h3>-</h3>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
+
             <!--Game area-->
             <div class="col-sm-12 col-md-9 gameArea">
 
@@ -87,6 +182,7 @@
                         <button class="dice" id="d12" value="12"><img src="static\dice_img\d-12.jpg"/></button>
                         <button class="dice" id="d20" value="20"><img src="static\dice_img\d-20.jpg"/></button>
                     </div>
+                    <br>
                     <!--Player-0 choosen dice and roll button for value-->
                     <div class="player-0-values row">
                         <div class="dice-value" id="d8"><img src="static\dice_img\d-8.jpg" /></div>
@@ -112,6 +208,7 @@
                         <button class="dice" id="d12" value="12"><img src="static\dice_img\d-12.jpg"/></button>
                         <button class="dice" id="d20" value="20"><img src="static\dice_img\d-20.jpg"/></button>
                     </div>
+                    <br>
                     <!--Player-1 choosen dice and roll button for value-->
                     <div class="player-1-values row">
                         <div class="dice-value" id="d4"><img src="static\dice_img\d-4.jpg" /></div>

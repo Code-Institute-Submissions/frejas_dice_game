@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="static\style.css">
+
     <title>Freja's Dice Game</title>
 </head>
 
@@ -22,6 +23,7 @@
 
 
     <div class="main">
+
         <!--Welcome mondal-->
         <div class="modal" tabindex="1" role="dialog" id="introMondal">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -44,7 +46,7 @@
                         <div class="playerVcomputer">
                             <!--Choice of player v player or aginst the computer-->
                             <div class="row">
-                                <button type="button" class="btn btn-primary" id="playerVplayer">
+                                <button type="button" class="btn btn-primary" id="playerVplayer" value="1">
                                     <h5> Player V Player</h3>
                                 </button>
 
@@ -56,12 +58,12 @@
 
                         <div class="playerInformation">
                             <!--Player Info, colour choice and help option-->
-                            <form action="/action_page.php">
+                            <form id="userId">
                                 <!--Player 0-->
                                 <label for="player-0-name">First Player Name</label>
 
                                 <br>
-                                <input type="text" id="player-0-name" name="player1" placeholder="Player 1">
+                                <input type="text" id="input-player-0-name" name="player1" placeholder="Player 1">
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="helpSwitch-Player-0" checked="">
                                     <label class="custom-control-label" for="customSwitch1">Help Tool</label>
@@ -81,7 +83,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Start</button>
+                        <button type="button" id="start-btn" class="btn btn-primary">Start</button>
 
                     </div>
                 </div>
@@ -100,8 +102,8 @@
                 <!--Player-0 score area-->
                 <div class="row players-score">
                     <div class="col-6 player-0">
-                        <div class="player-0-name">
-                            <h4>Player 1</h4>
+                        <div class="container">
+                            <h4 class="player-0-name">Player 1</h4>
                         </div>
                         <div class="score-box">
                             <div class="player-0-score">1</div>
@@ -170,8 +172,8 @@
                 <!--Player-0 area-->
                 <div class="player-0-play-area active">
                     <br>
-                    <div class="player-0-name">
-                        <h4>Player 1</h3>
+                    <div class="container">
+                        <h4 class="player-0-name">Player 1</h3>
                     </div>
                     <br>
                     <!--Dice board for player-0-->

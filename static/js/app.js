@@ -92,6 +92,15 @@ function reset() {
 
 };
 
+//Random player to start the game
+let randomPlayer;
+
+function randomStarter() {
+    randomPlayer = Math.floor(Math.random() * 2);
+    console.log(randomPlayer);
+
+    document.querySelector('.player-' + randomPlayer + '-play-area').classList.add('active');
+}
 
 
 
@@ -126,6 +135,7 @@ document.getElementById("start-btn").addEventListener("click", function() {
     reset();
 
     //random player start
+    randomStarter();
 
     //close modal
     closeMondal();

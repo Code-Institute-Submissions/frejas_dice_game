@@ -71,7 +71,26 @@ function getPlayerData() {
 };
 
 
+//Clear history and set score
+function reset() {
 
+    //Clear history
+    const clearHistory = (elms) => elms.forEach(el => el.remove());
+    clearHistory(document.querySelectorAll(".histroy-row"));
+
+    //add default line for history
+    let starterLine = document.createElement('div');
+    starterLine.innerHTML = '<div class="row histroy-row"><!--Round counter--><div class="col-3 round-counter"><h4>1:</h4></div><!--Player 0 score and used dice--><div class="col dice-history"><h3>-</h3></div><!--Player 1 score and used dice--><div class="col dice-history"><h3>-</h3></div></div>';
+    document.getElementById("history").appendChild(starterLine);
+
+
+
+    //Reset score to 0-0
+    document.getElementById('player-1-score').textContent = '0';
+    document.getElementById('player-0-score').textContent = '0';
+
+
+};
 
 
 
@@ -97,18 +116,14 @@ Start btn
 */
 document.getElementById("start-btn").addEventListener("click", function() {
 
-    //Data saved
+    //Get player player and change to their name in HTML
     getPlayerData();
-
-
-
-
-
 
     //computer as player check
 
 
     //reset score and history
+    reset();
 
     //random player start
 

@@ -55,18 +55,30 @@ let player2Name;
 
 function getPlayerData() {
     //Get local player names from form input
-    var player1 = document.getElementById("userId").elements.namedItem("player1").value;
-    var player2 = document.getElementById("userId").elements.namedItem("player2").value;
+    let player1 = document.getElementById("userId").elements.namedItem("player1").value;
+    let player2 = document.getElementById("userId").elements.namedItem("player2").value;
+
+    //Set default Name if no input for player names
+    if (player1 == 0) {
+        player1 = "Player 1"
+    };
+
+    if (player2 == 0) {
+        player2 = "Player 2"
+    };
 
     //Change the name from HTML
-    let player1Name = document.getElementsByClassName("player-0-name");
-    let player2Name = document.getElementsByClassName("player-1-name");
+    let player1Name = document.getElementsByClassName("player-1-name");
+    let player2Name = document.getElementsByClassName("player-2-name");
 
     for (var i = 0; i < player1Name.length; i++) {
         player1Name[i].innerHTML = player1;
         player2Name[i].innerHTML = player2;
 
     }
+
+    console.log(player1);
+    console.log(player2);
 
 };
 
@@ -80,24 +92,38 @@ function reset() {
 
     //add default line for history
     let starterLine = document.createElement('div');
-    starterLine.innerHTML = '<div class="row histroy-row"><!--Round counter--><div class="col-3 round-counter"><h4>1:</h4></div><!--Player 0 score and used dice--><div class="col dice-history"><h3>-</h3></div><!--Player 1 score and used dice--><div class="col dice-history"><h3>-</h3></div></div>';
+    starterLine.innerHTML = '<div class="row histroy-row"><!--Round counter--><div class="col-3 round-counter"><h4>1:</h4></div><!--Player 1 score and used dice--><div class="col dice-history"><h3>-</h3></div><!--Player 2 score and used dice--><div class="col dice-history"><h3>-</h3></div></div>';
     document.getElementById("history").appendChild(starterLine);
 
 
 
     //Reset score to 0-0
     document.getElementById('player-1-score').textContent = '0';
-    document.getElementById('player-0-score').textContent = '0';
+    document.getElementById('player-2-score').textContent = '0';
 
 
 };
 
 //Random player to start the game
 let randomPlayer;
+let winner;
 
 function randomStarter() {
-    randomPlayer = Math.floor(Math.random() * 2);
-    console.log(randomPlayer);
+    randomPlayer = Math.floor(Math.random() * 2 + 1);
+
+    winner = 'player' + randomPlayer;
+
+
+
+    console.log(winner);
+
+    if (randomPlayer === 1) {
+        console.log(player1)
+    } else {
+        console.log(player2)
+    };
+
+
 
     document.querySelector('.player-' + randomPlayer + '-play-area').classList.add('active');
 }

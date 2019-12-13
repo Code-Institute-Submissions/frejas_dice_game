@@ -59,23 +59,23 @@
                         <div class="playerInformation">
                             <!--Player Info, colour choice and help option-->
                             <form id="userId">
-                                <!--Player 0-->
-                                <label for="player-0-name">First Player Name</label>
+                                <!--Player 1-->
+                                <label for="player-1-name">First Player Name</label>
 
                                 <br>
                                 <input type="text" id="input-player-0-name" name="player1" placeholder="Player 1">
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="helpSwitch-Player-0" checked="">
+                                    <input type="checkbox" class="custom-control-input" id="helpSwitch-Player-1" checked="">
                                     <label class="custom-control-label" for="customSwitch1">Help Tool</label>
                                 </div>
                                 <br>
 
                                 <!--Player 1-->
-                                <label for="player-1-name">Second Player Name</label>
+                                <label for="player-2-name">Second Player Name</label>
                                 <br>
-                                <input type="text" id="player-1-name" name="player2" placeholder="Player 2">
+                                <input type="text" id="player-2-name" name="player2" placeholder="Player 2">
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="helpSwitch-Player-1" checked="">
+                                    <input type="checkbox" class="custom-control-input" id="helpSwitch-Player-2" checked="">
                                     <label class="custom-control-label" for="customSwitch1">Help Tool</label>
                                 </div>
 
@@ -99,24 +99,25 @@
             <div class="d-none d-md-block col-md-3 table-area">
                 <h1>Score</h1>
                 <br>
-                <!--Player-0 score area-->
+                <!--Player-1 score area-->
                 <div class="row players-score">
-                    <div class="col-6 player-0">
+
+                    <div class="col-6 player-1">
                         <div class="container">
-                            <h4 class="player-0-name">Player 1</h4>
+                            <h4 class="player-1-name">Player 1</h4>
                         </div>
                         <div class="score-box">
-                            <div class="player-0-score" id="player-0-score">1</div>
+                            <div class="player-1-score" id="player-1-score">1</div>
                         </div>
                     </div>
 
-                    <!--Player-1 score area-->
-                    <div class="col-6 player-1">
-                        <div class="player-1-name">
-                            <h4>Player 2</h4>
+                    <!--Player-2 score area-->
+                    <div class="col-6 player-2">
+                        <div class="container">
+                            <h4 class="player-2-name">Player 2</h4>
                         </div>
                         <div class="score-box">
-                            <div class="player-1-score" id="player-1-score">3</div>
+                            <div class="player-2-score" id="player-2-score">3</div>
                         </div>
 
                     </div>
@@ -132,13 +133,13 @@
                         <div class="col-3 round-counter">
                             <h4>1:</h4>
                         </div>
-                        <!--Player 0 score and used dice-->
+                        <!--Player 1 score and used dice-->
                         <div class="col dice-history">
                             <button class="diceHistory" id="d8" value="8"><img src="static\dice_img\d-8.jpg"/></button>
                             <h3>6</h3>
 
                         </div>
-                        <!--Player 1 score and used dice-->
+                        <!--Player 2 score and used dice-->
                         <div class="col dice-history">
                             <button class="diceHistory" id="d20" value="20"><img src="static\dice_img\d-20.jpg"/></button>
                             <h3>9</h3>
@@ -151,12 +152,12 @@
                         <div class="col-3 round-counter">
                             <h4>2:</h4>
                         </div>
-                        <!--Player 0 score and used dice-->
+                        <!--Player 1 score and used dice-->
                         <div class="col dice-history">
                             <h3>-</h3>
 
                         </div>
-                        <!--Player 1 score and used dice-->
+                        <!--Player 2 score and used dice-->
                         <div class="col dice-history">
                             <h3>-</h3>
                         </div>
@@ -169,15 +170,15 @@
             <!--Game area-->
             <div class="col-sm-12 col-md-9 gameArea">
 
-                <!--Player-0 area-->
-                <div class="player-0-play-area">
+                <!--Player-1 area-->
+                <div class="player-1-play-area">
                     <br>
                     <div class="container">
-                        <h4 class="player-0-name">Player 1</h3>
+                        <h4 class="player-1-name">Player 1</h3>
                     </div>
                     <br>
                     <!--Dice board for player-0-->
-                    <div class="player-0-dice row">
+                    <div class="player-1-dice row">
                         <button class="dice" id="d4" value="4"><img src="static\dice_img\d-4.jpg"/></button>
                         <button class="dice" id="d6" value="6"><img src="static\dice_img\d-6.jpg"/></button>
                         <button class="dice" id="d8" value="8"><img src="static\dice_img\d-8.jpg"/></button>
@@ -186,23 +187,23 @@
                     </div>
                     <br>
                     <!--Player-0 choosen dice and roll button for value-->
-                    <div class="player-0-values row">
+                    <div class="player-1-values row">
                         <div class="dice-value" id="d8"><img src="static\dice_img\d-8.jpg" /></div>
-                        <div class="value-die" id="score-0">8</div>
+                        <div class="value-die" id="score-1">8</div>
                     </div>
                 </div>
 
                 <br>
                 <br>
 
-                <!--Player-1 area-->
-                <div class="player-1-play-area">
+                <!--Player-2 area-->
+                <div class="player-2-play-area">
                     <br>
-                    <div class="player-1-name">
-                        <h4>Player 2</h3>
+                    <div class="container">
+                        <h4 class="player-2-name">Player 2</h3>
                     </div>
                     <br>
-                    <!--Dice board for player-1-->
+                    <!--Dice board for player-2-->
                     <div class="player-1-dice row" id="player-1-dice">
                         <button class="dice" id="d4" value="4"><img src="static\dice_img\d-4.jpg"/></button>
                         <button class="dice" id="d6" value="6"><img src="static\dice_img\d-6.jpg"/></button>
@@ -211,10 +212,10 @@
                         <button class="dice" id="d20" value="20"><img src="static\dice_img\d-20.jpg"/></button>
                     </div>
                     <br>
-                    <!--Player-1 choosen dice and roll button for value-->
-                    <div class="player-1-values row">
+                    <!--Player-2 choosen dice and roll button for value-->
+                    <div class="player-2-values row">
                         <div class="dice-value" id="d4"><img src="static\dice_img\d-4.jpg" /></div>
-                        <div class="value-die" id="score-1">10</div>
+                        <div class="value-die" id="score-2">10</div>
                     </div>
                 </div>
             </div>

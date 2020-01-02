@@ -24,8 +24,8 @@
 
     <div class="main">
 
-        <!--Welcome mondal-->
-        <div class="modal" tabindex="1" role="dialog" id="introMondal">
+        <!--Welcome modal-->
+        <div class="modal" tabindex="1" role="dialog" id="introModal">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -70,7 +70,7 @@
                                 </div>
                                 <br>
 
-                                <!--Player 1-->
+                                <!--Player 2-->
                                 <label for="player-2-name">Second Player Name</label>
                                 <br>
                                 <input type="text" id="player-2-name" name="player2" placeholder="Player 2">
@@ -177,20 +177,27 @@
                         <h4 class="player-1-name">Player 1</h3>
                     </div>
                     <br>
-                    <!--Dice board for player-0-->
+                    <!--Dice board for player-1-->
                     <div class="player-1-dice row">
-                        <button class="dice" id="d4" value="4"><img src="static\dice_img\d-4.jpg"/></button>
-                        <button class="dice" id="d6" value="6"><img src="static\dice_img\d-6.jpg"/></button>
-                        <button class="dice" id="d8" value="8"><img src="static\dice_img\d-8.jpg"/></button>
-                        <button class="dice" id="d12" value="12"><img src="static\dice_img\d-12.jpg"/></button>
-                        <button class="dice" id="d20" value="20"><img src="static\dice_img\d-20.jpg"/></button>
+                        <button class="dice" id="player1-d4" value="4"><img src="static\dice_img\d-4.jpg"/></button>
+                        <button class="dice" id="player1-d6" value="6"><img src="static\dice_img\d-6.jpg"/></button>
+                        <button class="dice" id="player1-d8" value="8"><img src="static\dice_img\d-8.jpg"/></button>
+                        <button class="dice" id="player1-d12" value="12"><img src="static\dice_img\d-12.jpg"/></button>
+                        <button class="dice" id="player1-d20" value="20"><img src="static\dice_img\d-20.jpg"/></button>
                     </div>
                     <br>
-                    <!--Player-0 choosen dice and roll button for value-->
+                    <!--Player-1 choosen dice and roll button for value-->
                     <div class="player-1-values row">
                         <div class="dice-value" id="d8"><img src="static\dice_img\d-8.jpg" /></div>
                         <div class="value-die" id="score-1">8</div>
                     </div>
+                    <br>
+                    <!--Player-1 info-->
+                    <div class="player-1-info row" id="player-1-info">
+                        <h3>Testing info area</h3>
+                    </div>
+
+
                 </div>
 
                 <br>
@@ -205,17 +212,22 @@
                     <br>
                     <!--Dice board for player-2-->
                     <div class="player-1-dice row" id="player-1-dice">
-                        <button class="dice" id="d4" value="4"><img src="static\dice_img\d-4.jpg"/></button>
-                        <button class="dice" id="d6" value="6"><img src="static\dice_img\d-6.jpg"/></button>
-                        <button class="dice" id="d8" value="8"><img src="static\dice_img\d-8.jpg"/></button>
-                        <button class="dice" id="d12" value="12"><img src="static\dice_img\d-12.jpg"/></button>
-                        <button class="dice" id="d20" value="20"><img src="static\dice_img\d-20.jpg"/></button>
+                        <button class="dice" id="player2-d4" value="4"><img src="static\dice_img\d-4.jpg"/></button>
+                        <button class="dice" id="player2-d6" value="6"><img src="static\dice_img\d-6.jpg"/></button>
+                        <button class="dice" id="player2-d8" value="8"><img src="static\dice_img\d-8.jpg"/></button>
+                        <button class="dice" id="player2-d12" value="12"><img src="static\dice_img\d-12.jpg"/></button>
+                        <button class="dice" id="player2-d20" value="20"><img src="static\dice_img\d-20.jpg"/></button>
                     </div>
                     <br>
                     <!--Player-2 choosen dice and roll button for value-->
                     <div class="player-2-values row">
                         <div class="dice-value" id="d4"><img src="static\dice_img\d-4.jpg" /></div>
                         <div class="value-die" id="score-2">10</div>
+                    </div>
+                    <br>
+                    <!--Player-2 info-->
+                    <div class="player-2-info row" id="player-2-info">
+                        <h3>Testing info area</h3>
                     </div>
                 </div>
             </div>

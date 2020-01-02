@@ -18,35 +18,37 @@ let diceValue;
 
 let dice;
 
+function gamePlay() {
 
-$('.dice').click(function() {
-    //Get dice highest value for the roll of the dice
-    var diceValue = $(this).val();
-    console.log(diceValue);
+    $('.dice').click(function() {
+        //Get dice highest value for the roll of the dice
+        var diceValue = $(this).val();
+        console.log(diceValue);
 
-    //Dice roll
-    dice = Math.floor(Math.random() * diceValue + 1);
-    console.log(dice);
+        //Dice roll
+        dice = Math.floor(Math.random() * diceValue + 1);
+        console.log(dice);
 
+    })
+}
+
+
+//Modal Options
+
+//Modal open on page ready
+$(window).on('load', function() {
+    $("#introModal").modal('show')
 });
 
-
-//Mondal Options
-
-//Mondal open on page ready
-$(document).ready(function() {
-    $("#introMondal").modal('show')
-});
-
-//close mondal
-function closeMondal() {
-    $("#introMondal").modal('hide');
+//close modal
+function closeModal() {
+    $("#introModal").modal('hide');
 };
 
 
 
 
-//Get Local players Name from Mondal 
+//Get Local players Name from Modal 
 
 let player1;
 let player2;
@@ -55,8 +57,8 @@ let player2Name;
 
 function getPlayerData() {
     //Get local player names from form input
-    let player1 = document.getElementById("userId").elements.namedItem("player1").value;
-    let player2 = document.getElementById("userId").elements.namedItem("player2").value;
+    player1 = document.getElementById("userId").elements.namedItem("player1").value;
+    player2 = document.getElementById("userId").elements.namedItem("player2").value;
 
     //Set default Name if no input for player names
     if (player1 == 0) {
@@ -68,8 +70,8 @@ function getPlayerData() {
     };
 
     //Change the name from HTML
-    let player1Name = document.getElementsByClassName("player-1-name");
-    let player2Name = document.getElementsByClassName("player-2-name");
+    player1Name = document.getElementsByClassName("player-1-name");
+    player2Name = document.getElementsByClassName("player-2-name");
 
     for (var i = 0; i < player1Name.length; i++) {
         player1Name[i].innerHTML = player1;
@@ -84,11 +86,24 @@ function getPlayerData() {
 
 
 //Clear history and set score
+let player1Info;
+let player2Info;
+
 function reset() {
 
-    //Clear history
+    //Clear html for new start
+    //clear Histroy
+
     const clearHistory = (elms) => elms.forEach(el => el.remove());
     clearHistory(document.querySelectorAll(".histroy-row"));
+
+    //clear player info row
+    player1Info = (document.querySelectorAll(".player-1-info"));
+    player2Info = (document.querySelectorAll(".player-2-info"));
+
+    clearHistory(player1Info);
+    clearHistory(player2Info);
+
 
     //add default line for history
     let starterLine = document.createElement('div');
@@ -111,22 +126,18 @@ let winner;
 function randomStarter() {
     randomPlayer = Math.floor(Math.random() * 2 + 1);
 
-    winner = 'player' + randomPlayer;
-
-
-
+    winner = 'player-' + randomPlayer;
     console.log(winner);
 
     if (randomPlayer === 1) {
-        console.log(player1)
+        player1Info = (player1 + ' Goes First!');
+        console.log(player1Info);
     } else {
-        console.log(player2)
+        player2Info = (player2 + ' Goes First!');
+        console.log(player2Info);
     };
 
-
-
-    document.querySelector('.player-' + randomPlayer + '-play-area').classList.add('active');
-}
+};
 
 
 
@@ -146,7 +157,7 @@ Start btn
 - clear history from previse game
 - set score to 0 - 0
 - random player goes first
-- close mondal to see game
+- close modal to see game
 
 */
 document.getElementById("start-btn").addEventListener("click", function() {
@@ -164,5 +175,8 @@ document.getElementById("start-btn").addEventListener("click", function() {
     randomStarter();
 
     //close modal
-    closeMondal();
+    closeModal();
+
+    //game play
+    gamePlay();
 });

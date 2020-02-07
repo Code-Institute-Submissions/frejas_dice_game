@@ -15,6 +15,7 @@ let score = [0, 0];
 let roundValue = 0;
 let activePlayer = 0;
 let diceValue;
+let activeDice;
 
 let dice;
 
@@ -29,10 +30,14 @@ function gamePlay() {
         dice = Math.floor(Math.random() * diceValue + 1);
         console.log(dice);
 
-    })
-}
+        //show new dice
+        activeDice.src = "static/dice_img/d-" + diceValue + ".jpg";
 
 
+    });
+};
+
+///////////////////////////////////
 //Modal Options
 
 //Modal open on page ready
@@ -49,7 +54,6 @@ function closeModal() {
 
 
 //Get Local players Name from Modal 
-
 let player1;
 let player2;
 let player1Name;
@@ -84,7 +88,7 @@ function getPlayerData() {
 
 };
 
-
+///////////////////////////////////
 //Clear history and set score
 let player1Info;
 let player2Info;
@@ -95,14 +99,15 @@ function reset() {
     //clear Histroy
 
     const clearHistory = (elms) => elms.forEach(el => el.remove());
+
     clearHistory(document.querySelectorAll(".histroy-row"));
 
     //clear player info row
     player1Info = (document.querySelectorAll(".player-1-info"));
     player2Info = (document.querySelectorAll(".player-2-info"));
 
-    clearHistory(player1Info);
-    clearHistory(player2Info);
+    //clearHistory(player1Info);
+    //clearHistory(player2Info);
 
 
     //add default line for history
@@ -119,9 +124,35 @@ function reset() {
 
 };
 
+///////////////////////////////////
 //Random player to start the game
 let randomPlayer;
 let winner;
+
+let player1Area = document.getElementById("player-1-play-area");
+let player2Area = document.getElementById("player-2-play-area");
+
+let showDice1 = document.getElementById("showPlayer1Dice");
+let showDice2 = document.getElementById("showPlayer2Dice");
+
+
+//deactive player 2 div
+function change1() {
+    player1Area.classList.toggle("disabled");
+    player2Area.classList.toggle("activePlayer");
+    //deactive dice area player 2
+    showDice2.classList.toggle("diceRowValue");
+};
+
+//deactive player 1 div
+function change2() {
+    player2Area.classList.toggle("disabled");
+    player1Area.classList.toggle("activePlayer");
+    //deactive dice area player 1
+    showDice1.classList.toggle("diceRowValue");
+
+};
+
 
 function randomStarter() {
     randomPlayer = Math.floor(Math.random() * 2 + 1);
@@ -130,15 +161,31 @@ function randomStarter() {
     console.log(winner);
 
     if (randomPlayer === 1) {
-        player1Info = (player1 + ' Goes First!');
-        console.log(player1Info);
+        //Test for which player turn in console.log
+        playerOneInfo = (player1 + ' Turn!');
+        console.log(playerOneInfo);
+
+        //Change inner html to show player-1 turn
+        player1Info.innerHTML = "playerOneInfo";
+
+        //active dice area
+        activeDice = document.getElementById('showndice1');
+
+
+        change1();
+
     } else {
-        player2Info = (player2 + ' Goes First!');
-        console.log(player2Info);
+        //Change inner html to show player-2 turn
+        playerTwoInfo = (player2 + ' Turn!');
+        console.log(playerTwoInfo);
+
+        //active dice area
+        activeDice = document.getElementById('showndice2');
+
+        change2();
+
     };
-
-};
-
+}
 
 
 
@@ -149,6 +196,8 @@ function randomStarter() {
 
 
 
+
+///////////////////////////////////
 
 /*
 Start btn
@@ -156,6 +205,7 @@ Start btn
 - check to see if its player V player or against computer
 - clear history from previse game
 - set score to 0 - 0
+- on second players turn, set different colour borders on percentage as a helper
 - random player goes first
 - close modal to see game
 
@@ -176,6 +226,8 @@ document.getElementById("start-btn").addEventListener("click", function() {
 
     //close modal
     closeModal();
+
+    //helper percentage colours
 
     //game play
     gamePlay();

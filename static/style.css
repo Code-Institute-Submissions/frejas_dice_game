@@ -30,14 +30,29 @@ div {
     justify-content: center;
 }
 
+.player-1-dice,
+.player-2-dice {
+    height: 20%;
+    display: inline-block;
+}
+
 .dice {
-    height: 15%;
-    max-width: 15%;
-    width: 150px;
+    height: 100%;
+    max-height: 100px;
+    max-width: 80px;
+    width: 80%;
     margin: 5px;
     border-radius: 10px;
     border-color: black;
     background-color: azure;
+}
+
+.dice:hover {
+    max-height: 125px;
+    height: 15%;
+    width: 15%;
+    max-width: 125px;
+    border-color: yellow;
 }
 
 .dice img {
@@ -52,17 +67,20 @@ div {
 }
 
 .dice-value {
-    height: 10%;
-    max-width: 10%;
-    width: 100px;
+    height: 100%;
+    max-height: 100px;
+    max-width: 80px;
+    width: 80%;
     margin: 5px;
     border-radius: 10px;
+    border-color: black;
+    background-color: azure;
 }
 
 .dice-value img {
     object-fit: contain;
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 80%;
+    max-height: 80%;
     background-position: center;
 }
 
@@ -123,6 +141,19 @@ div {
 }
 
 
+/* btn for rolling*/
+
+.roll {
+    height: 100%;
+    max-width: 100px;
+    width: 100%;
+    margin: 5px;
+    border-radius: 10px;
+    border-color: black;
+    background-color: rgb(10, 153, 22);
+}
+
+
 /* Intro Modal*/
 
 .modal-title {
@@ -147,4 +178,15 @@ select {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+
+/* Disabled area*/
+
+.disabled {
+    pointer-events: none;
+}
+
+.activePlayer {
+    background-color: rgba(63, 191, 127, 0.46);
 }

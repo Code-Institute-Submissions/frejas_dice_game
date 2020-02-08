@@ -34,7 +34,15 @@ function gamePlay() {
         activeDice.src = "static/dice_img/d-" + diceValue + ".jpg";
 
 
-    });
+    })
+
+    diceRowValue.addEventListener("mouseenter", function() {
+        activeDice.src = "static/dice_img/d-" + diceValue + ".jpg";
+    })
+
+
+
+
 };
 
 ///////////////////////////////////
@@ -135,6 +143,9 @@ let player2Area = document.getElementById("player-2-play-area");
 let showDice1 = document.getElementById("showPlayer1Dice");
 let showDice2 = document.getElementById("showPlayer2Dice");
 
+let activeRollBtn1 = document.getElementById("player1btn");
+let activeRollBtn2 = document.getElementById("player2btn");
+
 
 //deactive player 2 div
 function change1() {
@@ -142,6 +153,9 @@ function change1() {
     player2Area.classList.toggle("activePlayer");
     //deactive dice area player 2
     showDice2.classList.toggle("diceRowValue");
+    //active roll btn
+    activeRollBtn2.classList.toggle("active");
+
 };
 
 //deactive player 1 div
@@ -150,6 +164,8 @@ function change2() {
     player1Area.classList.toggle("activePlayer");
     //deactive dice area player 1
     showDice1.classList.toggle("diceRowValue");
+    //active roll btn
+    activeRollBtn1.classList.toggle("active");
 
 };
 
@@ -170,6 +186,7 @@ function randomStarter() {
 
         //active dice area
         activeDice = document.getElementById('showndice1');
+
 
 
         change1();

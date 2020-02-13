@@ -21,10 +21,20 @@ let diceOptionsplayer2 = [4, 6, 8, 12, 20];
 let randomStartDice1;
 let randomStartDice2;
 
-let player1dice = '-';
-let player2dice = '-';
+
+
+
+let player1dice;
+let player2dice;
 
 let dice;
+
+let html;
+let history;
+
+
+
+
 
 function gamePlay() {
 
@@ -72,38 +82,74 @@ function gamePlay() {
         */
 
         if (document.getElementById("player1playarea").classList.contains("activePlayer")) {
-            let player1score = dice;
-            let player1dice = diceValue;
+            player1score = this.dice;
+            player1dice = this.diceValue;
+
+            if (player1score > 0) {
+                console.log(player1score + " this works");
+            };
 
             change1();
             change1extra();
 
         } else {
-            let player2score = dice;
-            let player2dice = diceValue;
+            player2score = this.dice;
+            player2dice = this.diceValue;
+
+            if (player2score > 0) {
+                console.log(player2score + " this works");
+            };
 
 
             change2();
             change2extra();
         };
 
-        //hard code for history on players dice and score
+        if (player2score > 0 && player1score > 0) {
+            console.log("both scored");
 
 
-        html = '<div class="row histroy-row" id="histroy-row"><!--Round counter--><div class="col-3 round-counter" id="roundcounter"><h4>%roundValue%:</h4></div><!--Player 1 score and used dice--><div class="col dice-history"> <button class="diceHistory" id="d%player1dice%" value="%player1dice%"><img src="static\dice_img\d-%player1dice%.jpg"/></button> %player1score%</div><!--Player 2 score and used dice--><div class="col dice-history"> <button class="diceHistory" id="d%player2dice%" value="%player2dice%"><img src="static\dice_img\d-%player2dice%.jpg"/></button> %player1score%</div></div>
+            // show history of score and dice
+
+
+            insert = '<div class="row histroy-row" id="histroy-row"><!--Round counter--><div class="col-3 round-counter" id="roundcounter"><h4>' + roundValue + ':</h4></div><!--Player 1 score and used dice--><div class="col dice-history"><button class="diceHistory" id="' + player1dice + '"value="' + player1dice + '"><img src="static/dice_img/d-' + player1dice + '.jpg"/></button> ' + player1score + '</div><!--Player 2 score and used dice--><div class="col dice-history"><button class="diceHistory" id="' + player2dice + ' value="' + player2dice + '><img src="static/dice_img/d-' + player2dice + '.jpg"/></button>' + player2score + '</div></div>'
+
+
+            console.log(roundValue + ' roundValue');
+            console.log(player1dice + ' player1dice');
+            console.log(player2dice + ' player2dice');
+            console.log(player1score + ' player1score');
+            console.log(player2score + ' player2score');
+
+
+
+            console.log(insert);
+
+            let testing = document.getElementById("histroyrow");
+            testing.innerHTML = insert;
+
+
+
+
+        }
+
 
 
     });
 
-
-
-
-    //both players have a score
-
+    //hard code for history on players dice and score
 
 
 
 };
+
+
+//both players have a score
+
+
+
+
+
 
 //start with random dice (thats not been used) on start
 function newdice() {

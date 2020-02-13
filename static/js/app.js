@@ -38,13 +38,16 @@ function gamePlay() {
         diceValue = $(this).val();
         //show new dice
         activeDice.src = "static/dice_img/d-" + diceValue + ".jpg";
+        console.log("works on btn clicked");
         rollDice();
+
 
     });
 
     $('.dice').on('mouseenter', function() {
         diceValue = $(this).val();
         activeDice.src = "static/dice_img/d-" + diceValue + ".jpg";
+        console.log("works");
     });
 
     //roll the dice on btn
@@ -116,7 +119,11 @@ function rollDice() {
 
             let changeOne = document.getElementById('player1score-' + roundValue);
             changeOne.classList.add("winner");
-            console.log("change for winner");
+            console.log("change for winner1");
+
+            //to stop changes if won twice
+
+            ///////////need to add a for loop to stop double wins
 
             change2();
             change2extra();
@@ -141,6 +148,7 @@ function rollDice() {
         player2score = 0;
         player2dice = 0;
         roundValue += 1;
+
     }
 
 }

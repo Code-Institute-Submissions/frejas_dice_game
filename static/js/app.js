@@ -11,7 +11,8 @@ Die can only used once per game or if total game score is higher than die number
 */
 
 
-let score = [0, 0];
+let player1score = 0;
+let player2score = 0;
 let roundValue = 1;
 let activePlayer = 0;
 let diceValue = 0;
@@ -72,8 +73,6 @@ function rollDice() {
     //Dice roll
     dice = Math.floor(Math.random() * diceValue + 1);
 
-    console.log(dice);
-
     //set the dice roll to the player playing
     let playerDiceScore = dice;
 
@@ -108,9 +107,33 @@ function rollDice() {
 
         // show history of score and dice
         let newHistory = document.createElement('div');
-        newHistory.innerHTML = '<div class="row histroy-row" id="histroy-row"><!--Round counter--><div class="col-3 round-counter" id="roundcounter"><h4>' + roundValue + ':</h4></div><!--Player 1 score and used dice--><div class="col dice-history"><button class="diceHistory" id="' + player1dice + '"value="' + player1dice + '"><img src="static/dice_img/d-' + player1dice + '.jpg"/></button> ' + player1score + '</div><!--Player 2 score and used dice--><div class="col dice-history"><button class="diceHistory" id="' + player2dice + ' value="' + player2dice + '><img src="static/dice_img/d-' + player2dice + '.jpg"/></button>' + player2score + '</div></div>'
+        newHistory.innerHTML = '<div class="row histroy-row" id="histroy-row"><!--Round counter--><div class="col-3 round-counter" id="roundcounter"><h4>' + roundValue + ':</h4></div><!--Player 1 score and used dice--><div class="col dice-history"><button class="diceHistory" id="' + player1dice + '"value="' + player1dice + '"><img src="static/dice_img/d-' + player1dice + '.jpg"/></button><div id="player1score-' + roundValue + '"> ' + player1score + '</div></div><!--Player 2 score and used dice--><div class="col dice-history"><button class="diceHistory" id="' + player2dice + ' value="' + player2dice + '><img src="static/dice_img/d-' + player2dice + '.jpg"/></button><div id="player2score-' + roundValue + '"> ' + player2score + '</div></div></div>'
 
         document.getElementById("history").appendChild(newHistory);
+
+        if (player1score > player2score) {
+            player1score = player1score + 1;
+
+            let changeOne = document.getElementById('player1score-' + roundValue);
+            changeOne.classList.add("winner");
+            console.log("change for winner");
+
+            change2();
+            change2extra();
+        } else if (player1score < player2score) {
+            player2score = player2score + 1;
+
+            let changeTwo = document.getElementById('player2score-' + roundValue);
+            changeTwo.classList.add("winner");
+            console.log("change for winner2");
+
+            change1();
+            change1extra();
+        } else {
+
+        }
+
+
 
         player1score = 0;
         player1dice = 0;
@@ -212,8 +235,6 @@ function reset() {
 //Random player to start the game
 let randomPlayer;
 let winner;
-let player1score;
-let player2score;
 
 let player1Area = document.getElementById("player1playarea");
 let player2Area = document.getElementById("player2playarea");
@@ -245,9 +266,8 @@ function change1() {
     //get options from dice
     //active dice area
     activeDice = document.getElementById('showndice1');
-    console.log("active dice change 1");
-
     playerDiceScore = player1score;
+    console.log("change player1")
 };
 
 //extra for switching while playing
@@ -262,7 +282,6 @@ function change1extra() {
     rollResult1.classList.toggle("rollResult");
 
     activeDice = document.getElementById('showndice2');
-    console.log("active dice change EXTRA 1" + activeDice);
 
 };
 
@@ -284,7 +303,6 @@ function change2() {
 
     //active dice area
     activeDice = document.getElementById('showndice2');
-    console.log("active dice change 2");
 
     playerDiceScore = player2score;
 
@@ -299,7 +317,6 @@ function change2extra() {
     rollResult2.classList.toggle("rollResult");
 
     activeDice = document.getElementById('showndice1');
-    console.log("active dice change EXTRA 2" + activeDice);
 
 };
 
@@ -313,7 +330,7 @@ function randomStarter() {
     if (randomPlayer === 1) {
         //Test for which player turn in console.log
         playerOneInfo = (player1 + ' Turn!');
-        console.log(playerOneInfo);
+
 
         //Change inner html to show player-1 turn
         player1Info.innerHTML = "changed";

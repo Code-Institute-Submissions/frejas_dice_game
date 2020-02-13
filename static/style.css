@@ -92,6 +92,12 @@ div {
     background-color: white;
 }
 
+.winner {
+    border-radius: 10px;
+    border: black 1px solid;
+    background-color: rgba(63, 191, 127, 0.75);
+}
+
 .table-area {
     border-radius: 20px;
     border: black 1px solid;

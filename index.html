@@ -130,19 +130,17 @@
                     <div class="row histroy-row" id="histroy-row">
 
                         <!--Round counter-->
-                        <div class="col-3 round-counter">
+                        <div class="col-3 round-counter" id="player1history">
                             <h4>1:</h4>
                         </div>
                         <!--Player 1 score and used dice-->
                         <div class="col dice-history">
-                            <button class="diceHistory" id="d8" value="8"><img src="static\dice_img\d-8.jpg"/></button>
-                            <h3>6</h3>
+                            <button class="diceHistory" id="d8" value="8"><img src="static\dice_img\d-8.jpg"/></button> 6
 
                         </div>
                         <!--Player 2 score and used dice-->
-                        <div class="col dice-history">
-                            <button class="diceHistory" id="d20" value="20"><img src="static\dice_img\d-20.jpg"/></button>
-                            <h3>9</h3>
+                        <div class="col dice-history" id="player2history">
+                            <button class="diceHistory" id="d20" value="20"><img src="static\dice_img\d-20.jpg"/></button> 9
                         </div>
 
                     </div>
@@ -171,7 +169,7 @@
             <div class="col-sm-12 col-md-9 gameArea">
 
                 <!--Player-1 area-->
-                <div class="player-1-play-area disabled activePlayer" id="player-1-play-area">
+                <div class="player1playarea disabled activePlayer" id="player1playarea">
                     <br>
                     <div class="container">
                         <h4 class="player-1-name">Player 1</h3>
@@ -192,12 +190,12 @@
                     <br>
                     <!--Player-1 choosen dice and roll button for value-->
                     <div class="player-1-values diceRowValue row" id="showPlayer1Dice">
-                        <div class="dice-value"><img src="static\dice_img\d-8.jpg" id="showndice1" /></div>
+                        <div class="dice-value"><img src="" id="showndice1" /></div>
                         <button class="roll active" type="button" id="player1btn">Roll</button>
                     </div>
                     <br>
                     <!--Player-1 info-->
-                    <div class="player-1-info row" id="player-1-info">
+                    <div class="player-1-info rollResult row" id="player-1-info">
                         <h3>Testing info area</h3>
                     </div>
 
@@ -208,7 +206,7 @@
                 <br>
 
                 <!--Player-2 area-->
-                <div class="player-2-play-area disabled activePlayer" id="player-2-play-area">
+                <div class="player2playarea disabled activePlayer" id="player2playarea">
                     <br>
                     <div class="container">
                         <h4 class="player-2-name">Player 2</h3>
@@ -227,12 +225,12 @@
                     <br>
                     <!--Player-2 choosen dice and roll button for value-->
                     <div class="player-2-values diceRowValue row" id="showPlayer2Dice">
-                        <div class="dice-value"><img src="static\dice_img\d-4.jpg" id="showndice2" /></div>
+                        <div class="dice-value"><img src="" id="showndice2" /></div>
                         <button class="roll active" type="button" id="player2btn">Roll</button>
                     </div>
                     <br>
                     <!--Player-2 info-->
-                    <div class="player-2-info row" id="player-2-info">
+                    <div class="player-2-info rollResult row" id="player-2-info">
                         <h3>Testing info area</h3>
                     </div>
                 </div>

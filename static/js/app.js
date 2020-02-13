@@ -97,8 +97,9 @@ function rollDice() {
     */
 
     if (document.getElementById("player1playarea").classList.contains("activePlayer")) {
-        player1score = this.dice;
-        player1dice = this.diceValue;
+        player1score = dice;
+        player1dice = diceValue;
+
 
         if (player1score > 0) {
             console.log(player1score + " this works");
@@ -108,8 +109,9 @@ function rollDice() {
         change1extra();
 
     } else {
-        player2score = this.dice;
-        player2dice = this.diceValue;
+        player2score = dice;
+        player2dice = diceValue;
+
 
         if (player2score > 0) {
             console.log(player2score + " this works");
@@ -129,16 +131,16 @@ function rollDice() {
 
         insert = '<div class="row histroy-row" id="histroy-row"><!--Round counter--><div class="col-3 round-counter" id="roundcounter"><h4>' + roundValue + ':</h4></div><!--Player 1 score and used dice--><div class="col dice-history"><button class="diceHistory" id="' + player1dice + '"value="' + player1dice + '"><img src="static/dice_img/d-' + player1dice + '.jpg"/></button> ' + player1score + '</div><!--Player 2 score and used dice--><div class="col dice-history"><button class="diceHistory" id="' + player2dice + ' value="' + player2dice + '><img src="static/dice_img/d-' + player2dice + '.jpg"/></button>' + player2score + '</div></div>'
 
+        /*
+                console.log(roundValue + ' roundValue');
+                console.log(player1dice + ' player1dice');
+                console.log(player2dice + ' player2dice');
+                console.log(player1score + ' player1score');
+                console.log(player2score + ' player2score');
+        */
 
-        console.log(roundValue + ' roundValue');
-        console.log(player1dice + ' player1dice');
-        console.log(player2dice + ' player2dice');
-        console.log(player1score + ' player1score');
-        console.log(player2score + ' player2score');
 
 
-
-        console.log(insert);
 
         let testing = document.getElementById("histroyrow");
         testing.innerHTML = insert;
@@ -281,7 +283,8 @@ function change1() {
     //get options from dice
     //active dice area
     activeDice = document.getElementById('showndice1');
-    deactiveDice = document.getElementById('showndice2');
+    console.log("active dice change 1");
+
     playerDiceScore = player1score;
 };
 
@@ -295,6 +298,9 @@ function change1extra() {
     activeRollBtn1.classList.toggle("active");
 
     rollResult1.classList.toggle("rollResult");
+
+    activeDice = document.getElementById('showndice2');
+    console.log("active dice change EXTRA 1" + activeDice);
 
 };
 
@@ -316,7 +322,8 @@ function change2() {
 
     //active dice area
     activeDice = document.getElementById('showndice2');
-    deactiveDice = document.getElementById('showndice1');
+    console.log("active dice change 2");
+
     playerDiceScore = player2score;
 
 };
@@ -328,6 +335,10 @@ function change2extra() {
     activeRollBtn2.classList.toggle("active");
 
     rollResult2.classList.toggle("rollResult");
+
+    activeDice = document.getElementById('showndice1');
+    console.log("active dice change EXTRA 2" + activeDice);
+
 };
 
 //function to see who goes first

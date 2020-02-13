@@ -26,10 +26,6 @@ let player2dice;
 
 let dice;
 
-let html;
-let history;
-
-
 function gamePlay() {
 
     //get new dice on starting area
@@ -91,19 +87,10 @@ function rollDice() {
 
     //change player
 
-    /*
-    Notes
-    somewhere here is a problem with classname
-    */
 
     if (document.getElementById("player1playarea").classList.contains("activePlayer")) {
         player1score = dice;
         player1dice = diceValue;
-
-
-        if (player1score > 0) {
-            console.log(player1score + " this works");
-        };
 
         change1();
         change1extra();
@@ -112,12 +99,6 @@ function rollDice() {
         player2score = dice;
         player2dice = diceValue;
 
-
-        if (player2score > 0) {
-            console.log(player2score + " this works");
-        };
-
-
         change2();
         change2extra();
     };
@@ -125,36 +106,21 @@ function rollDice() {
     if (player2score > 0 && player1score > 0) {
         console.log("both scored");
 
-
         // show history of score and dice
+        let newHistory = document.createElement('div');
+        newHistory.innerHTML = '<div class="row histroy-row" id="histroy-row"><!--Round counter--><div class="col-3 round-counter" id="roundcounter"><h4>' + roundValue + ':</h4></div><!--Player 1 score and used dice--><div class="col dice-history"><button class="diceHistory" id="' + player1dice + '"value="' + player1dice + '"><img src="static/dice_img/d-' + player1dice + '.jpg"/></button> ' + player1score + '</div><!--Player 2 score and used dice--><div class="col dice-history"><button class="diceHistory" id="' + player2dice + ' value="' + player2dice + '><img src="static/dice_img/d-' + player2dice + '.jpg"/></button>' + player2score + '</div></div>'
 
+        document.getElementById("history").appendChild(newHistory);
 
-        insert = '<div class="row histroy-row" id="histroy-row"><!--Round counter--><div class="col-3 round-counter" id="roundcounter"><h4>' + roundValue + ':</h4></div><!--Player 1 score and used dice--><div class="col dice-history"><button class="diceHistory" id="' + player1dice + '"value="' + player1dice + '"><img src="static/dice_img/d-' + player1dice + '.jpg"/></button> ' + player1score + '</div><!--Player 2 score and used dice--><div class="col dice-history"><button class="diceHistory" id="' + player2dice + ' value="' + player2dice + '><img src="static/dice_img/d-' + player2dice + '.jpg"/></button>' + player2score + '</div></div>'
+        player1score = 0;
+        player1dice = 0;
 
-        /*
-                console.log(roundValue + ' roundValue');
-                console.log(player1dice + ' player1dice');
-                console.log(player2dice + ' player2dice');
-                console.log(player1score + ' player1score');
-                console.log(player2score + ' player2score');
-        */
-
-
-
-
-        let testing = document.getElementById("histroyrow");
-        testing.innerHTML = insert;
-
-
-
-
+        player2score = 0;
+        player2dice = 0;
+        roundValue += 1;
     }
 
 }
-
-
-
-
 
 
 
@@ -204,10 +170,6 @@ function getPlayerData() {
         player2Name[i].innerHTML = player2;
 
     }
-
-    console.log(player1);
-    console.log(player2);
-
 };
 
 ///////////////////////////////////
@@ -222,7 +184,7 @@ function reset() {
 
     const clearHistory = (elms) => elms.forEach(el => el.remove());
 
-    clearHistory(document.querySelectorAll(".histroy-row"));
+    clearHistory(document.querySelectorAll(".histroyrow"));
 
     //clear player info row
     player1Info = (document.querySelectorAll(".player-1-info"));
@@ -234,7 +196,7 @@ function reset() {
 
     //add default line for history
     let starterLine = document.createElement('div');
-    starterLine.innerHTML = '<div class="row histroy-row"><!--Round counter--><div class="col-3 round-counter"><h4>1:</h4></div><!--Player 1 score and used dice--><div class="col dice-history"><h3>-</h3></div><!--Player 2 score and used dice--><div class="col dice-history"><h3>-</h3></div></div>';
+    starterLine.innerHTML = '';
     document.getElementById("history").appendChild(starterLine);
 
 
@@ -346,7 +308,7 @@ function randomStarter() {
     randomPlayer = Math.floor(Math.random() * 2 + 1);
 
     winner = 'player-' + randomPlayer;
-    console.log(winner);
+
 
     if (randomPlayer === 1) {
         //Test for which player turn in console.log
@@ -356,37 +318,19 @@ function randomStarter() {
         //Change inner html to show player-1 turn
         player1Info.innerHTML = "changed";
 
-
-
-
-
-
         change1();
 
     } else {
         //Change inner html to show player-2 turn
         playerTwoInfo = (player2 + ' Turn!');
-        console.log(playerTwoInfo);
+
 
         //Change inner html to show player-1 turn
         player2Info.innerHTML = "playerTwoInfo";
-
-
-
         change2();
 
     };
 }
-
-
-
-
-
-
-
-
-
-
 
 ///////////////////////////////////
 

@@ -21,9 +21,6 @@ let diceOptionsplayer2 = [4, 6, 8, 12, 20];
 let randomStartDice1;
 let randomStartDice2;
 
-
-
-
 let player1dice;
 let player2dice;
 
@@ -31,9 +28,6 @@ let dice;
 
 let html;
 let history;
-
-
-
 
 
 function gamePlay() {
@@ -58,96 +52,10 @@ function gamePlay() {
 
     //roll the dice on btn
     $('.roll').click(function() {
-        //Dice roll
-        dice = Math.floor(Math.random() * diceValue + 1);
-
-        console.log(dice);
-
-        //set the dice roll to the player playing
-        let playerDiceScore = dice;
-
-        //error protection on player not selecting a dice
-        if (diceValue > 0) {
-            $(".rollResult").html("You rolled a value of " + dice);
-
-        } else {
-            $(".rollResult").html("Please select a dice");
-        };
-
-        //change player
-
-        /*
-        Notes
-        somewhere here is a problem with classname
-        */
-
-        if (document.getElementById("player1playarea").classList.contains("activePlayer")) {
-            player1score = this.dice;
-            player1dice = this.diceValue;
-
-            if (player1score > 0) {
-                console.log(player1score + " this works");
-            };
-
-            change1();
-            change1extra();
-
-        } else {
-            player2score = this.dice;
-            player2dice = this.diceValue;
-
-            if (player2score > 0) {
-                console.log(player2score + " this works");
-            };
-
-
-            change2();
-            change2extra();
-        };
-
-        if (player2score > 0 && player1score > 0) {
-            console.log("both scored");
-
-
-            // show history of score and dice
-
-
-            insert = '<div class="row histroy-row" id="histroy-row"><!--Round counter--><div class="col-3 round-counter" id="roundcounter"><h4>' + roundValue + ':</h4></div><!--Player 1 score and used dice--><div class="col dice-history"><button class="diceHistory" id="' + player1dice + '"value="' + player1dice + '"><img src="static/dice_img/d-' + player1dice + '.jpg"/></button> ' + player1score + '</div><!--Player 2 score and used dice--><div class="col dice-history"><button class="diceHistory" id="' + player2dice + ' value="' + player2dice + '><img src="static/dice_img/d-' + player2dice + '.jpg"/></button>' + player2score + '</div></div>'
-
-
-            console.log(roundValue + ' roundValue');
-            console.log(player1dice + ' player1dice');
-            console.log(player2dice + ' player2dice');
-            console.log(player1score + ' player1score');
-            console.log(player2score + ' player2score');
-
-
-
-            console.log(insert);
-
-            let testing = document.getElementById("histroyrow");
-            testing.innerHTML = insert;
-
-
-
-
-        }
-
-
+        rollDice();
 
     });
-
-    //hard code for history on players dice and score
-
-
-
 };
-
-
-//both players have a score
-
-
-
 
 
 
@@ -163,6 +71,84 @@ function newdice() {
     diceValue = randomStartDice2;
 };
 
+function rollDice() {
+
+    //Dice roll
+    dice = Math.floor(Math.random() * diceValue + 1);
+
+    console.log(dice);
+
+    //set the dice roll to the player playing
+    let playerDiceScore = dice;
+
+    //error protection on player not selecting a dice
+    if (diceValue > 0) {
+        $(".rollResult").html("You rolled a value of " + dice);
+
+    } else {
+        $(".rollResult").html("Please select a dice");
+    };
+
+    //change player
+
+    /*
+    Notes
+    somewhere here is a problem with classname
+    */
+
+    if (document.getElementById("player1playarea").classList.contains("activePlayer")) {
+        player1score = this.dice;
+        player1dice = this.diceValue;
+
+        if (player1score > 0) {
+            console.log(player1score + " this works");
+        };
+
+        change1();
+        change1extra();
+
+    } else {
+        player2score = this.dice;
+        player2dice = this.diceValue;
+
+        if (player2score > 0) {
+            console.log(player2score + " this works");
+        };
+
+
+        change2();
+        change2extra();
+    };
+
+    if (player2score > 0 && player1score > 0) {
+        console.log("both scored");
+
+
+        // show history of score and dice
+
+
+        insert = '<div class="row histroy-row" id="histroy-row"><!--Round counter--><div class="col-3 round-counter" id="roundcounter"><h4>' + roundValue + ':</h4></div><!--Player 1 score and used dice--><div class="col dice-history"><button class="diceHistory" id="' + player1dice + '"value="' + player1dice + '"><img src="static/dice_img/d-' + player1dice + '.jpg"/></button> ' + player1score + '</div><!--Player 2 score and used dice--><div class="col dice-history"><button class="diceHistory" id="' + player2dice + ' value="' + player2dice + '><img src="static/dice_img/d-' + player2dice + '.jpg"/></button>' + player2score + '</div></div>'
+
+
+        console.log(roundValue + ' roundValue');
+        console.log(player1dice + ' player1dice');
+        console.log(player2dice + ' player2dice');
+        console.log(player1score + ' player1score');
+        console.log(player2score + ' player2score');
+
+
+
+        console.log(insert);
+
+        let testing = document.getElementById("histroyrow");
+        testing.innerHTML = insert;
+
+
+
+
+    }
+
+}
 
 
 
@@ -286,38 +272,32 @@ let startdice2 = document.getElementById("showndice2");
 function change1() {
     player1Area.classList.toggle("disabled");
     player2Area.classList.toggle("activePlayer");
-
     //deactive dice area player 2
     showDice1.classList.toggle("diceRowValue");
-
     //active roll btn
     activeRollBtn2.classList.toggle("active");
     //active roll result
-
     rollResult2.classList.toggle("rollResult");
     //get options from dice
-
     //active dice area
     activeDice = document.getElementById('showndice1');
     deactiveDice = document.getElementById('showndice2');
-
     playerDiceScore = player1score;
-
 };
 
 //extra for switching while playing
+
+
 function change1extra() {
     player2Area.classList.toggle("disabled");
     player1Area.classList.toggle("activePlayer");
     //active roll btn
     activeRollBtn1.classList.toggle("active");
 
-    //active dice area
-    activeDice = document.getElementById('showndice2');
-    deactiveDice = document.getElementById('showndice1');
+    rollResult1.classList.toggle("rollResult");
 
+};
 
-}
 
 //deactive player 1 div
 function change2() {
@@ -347,11 +327,8 @@ function change2extra() {
     //active roll btn
     activeRollBtn2.classList.toggle("active");
 
-    //active dice area
-    activeDice = document.getElementById('showndice1');
-    deactiveDice = document.getElementById('showndice2');
-
-}
+    rollResult2.classList.toggle("rollResult");
+};
 
 //function to see who goes first
 function randomStarter() {

@@ -288,7 +288,7 @@ function change1() {
     player2Area.classList.toggle("activePlayer");
 
     //deactive dice area player 2
-    showDice2.classList.toggle("diceRowValue");
+    showDice1.classList.toggle("diceRowValue");
 
     //active roll btn
     activeRollBtn2.classList.toggle("active");
@@ -311,6 +311,12 @@ function change1extra() {
     player1Area.classList.toggle("activePlayer");
     //active roll btn
     activeRollBtn1.classList.toggle("active");
+
+    //active dice area
+    activeDice = document.getElementById('showndice2');
+    deactiveDice = document.getElementById('showndice1');
+
+
 }
 
 //deactive player 1 div
@@ -319,7 +325,7 @@ function change2() {
     player1Area.classList.toggle("activePlayer");
 
     //deactive dice area player 1
-    showDice1.classList.toggle("diceRowValue");
+    showDice2.classList.toggle("diceRowValue");
 
     //active roll btn
     activeRollBtn1.classList.toggle("active");
@@ -340,6 +346,11 @@ function change2extra() {
     player2Area.classList.toggle("activePlayer");
     //active roll btn
     activeRollBtn2.classList.toggle("active");
+
+    //active dice area
+    activeDice = document.getElementById('showndice1');
+    deactiveDice = document.getElementById('showndice2');
+
 }
 
 //function to see who goes first

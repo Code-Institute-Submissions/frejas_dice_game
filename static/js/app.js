@@ -50,9 +50,8 @@ function gamePlay() {
         console.log("works on btn clicked");
         //roll the dice if clicked
         rollDice();
-
-
     });
+
     //change dice on mouse enter
     $('.dice').on('mouseenter', function() {
         diceValue = $(this).val();
@@ -105,6 +104,7 @@ function rollDice() {
     if (document.getElementById("player1playarea").classList.contains("activePlayer")) {
         player1score = dice;
         player1dice = diceValue;
+
         //change Player
         change1();
         change1extra();
@@ -114,6 +114,7 @@ function rollDice() {
     } else {
         player2score = dice;
         player2dice = diceValue;
+
         //change Player
         change2();
         change2extra();
@@ -315,7 +316,7 @@ function change1() {
     player2Area.classList.toggle("activePlayer");
 
     //deactive dice area player 2
-    showDice1.classList.toggle("diceRowValue");
+    showDice2.classList.toggle("diceRowValue");
 
     //active roll btn
     activeRollBtn2.classList.toggle("active");
@@ -325,7 +326,9 @@ function change1() {
 
     //get options from dice
     //active dice area
+
     activeDice = document.getElementById('showndice1');
+    console.log("change1" + activeDice);
     playerDiceScore = player1score;
 
 };
@@ -340,6 +343,8 @@ function change1extra() {
 
     rollResult1.classList.toggle("rollResult");
 
+
+
     activeDice = document.getElementById('showndice2');
 
 };
@@ -351,7 +356,7 @@ function change2() {
     player1Area.classList.toggle("activePlayer");
 
     //deactive dice area player 1
-    showDice2.classList.toggle("diceRowValue");
+    showDice1.classList.toggle("diceRowValue");
 
     //active roll btn
     activeRollBtn1.classList.toggle("active");
@@ -361,8 +366,9 @@ function change2() {
     //get options from dice
 
     //active dice area
-    activeDice = document.getElementById('showndice2');
 
+    activeDice = document.getElementById('showndice2');
+    console.log("change2" + activeDice);
     playerDiceScore = player2score;
 
 };

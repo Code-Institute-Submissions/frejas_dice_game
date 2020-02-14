@@ -40,9 +40,9 @@ let player2PointCounter = 0;
 
 //Game function
 function gamePlay() {
+
     //get new dice on starting area
     newdice();
-
 
     //If a die has been clicked
     $('.dice').click(function() {
@@ -141,6 +141,7 @@ function rollDice() {
                 diceOptionsplayer2.splice(i, 1);
             }
         }
+
     };
 
     //If both players have played a dice on the same turn
@@ -247,6 +248,33 @@ function getPlayerData() {
 
     }
 };
+
+
+
+//End game
+
+function finishedGame() {
+    if (diceOptionsplayer1.length = 0) {
+
+        $('#showndice1').hide();
+        $('#player1btn').addClass('disabled');
+    };
+
+    if (diceOptionsplayer2.length = 0) {
+
+        $('#showndice2').hide();
+        $('#player2btn').addClass('disabled');
+    };
+}
+
+
+
+
+
+
+
+
+
 
 
 //Clear history and set score on new Game
@@ -417,4 +445,7 @@ document.getElementById("start-btn").addEventListener("click", function() {
 
     //game play
     gamePlay();
+
+    //end of game
+    finishedGame();
 });

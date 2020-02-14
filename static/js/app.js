@@ -10,15 +10,19 @@ Die can only used once per game or if total game score is higher than die number
 
 */
 
-
+//score of each player/computer
 let player1score = 0;
 let player2score = 0;
+//round counter
 let roundValue = 1;
+//which player turn
 let activePlayer = 0;
 let diceValue = 0;
 let activeDice;
+//avaible dice to use
 let diceOptionsplayer1 = [4, 6, 8, 12, 20];
 let diceOptionsplayer2 = [4, 6, 8, 12, 20];
+//random dice on start of turn thats playable
 let randomStartDice1;
 let randomStartDice2;
 
@@ -26,7 +30,12 @@ let player1dice;
 let player2dice;
 
 let dice;
+//for a catch loop to insure to stop a double win change
+let player1PointCounter = 0;
+let player2PointCounter = 0;
 
+
+//Game function
 function gamePlay() {
 
     //get new dice on starting area
@@ -39,11 +48,12 @@ function gamePlay() {
         //show new dice
         activeDice.src = "static/dice_img/d-" + diceValue + ".jpg";
         console.log("works on btn clicked");
+        //roll the dice if clicked
         rollDice();
 
 
     });
-
+    //change dice on mouse enter
     $('.dice').on('mouseenter', function() {
         diceValue = $(this).val();
         activeDice.src = "static/dice_img/d-" + diceValue + ".jpg";
@@ -61,16 +71,18 @@ function gamePlay() {
 
 //start with random dice (thats not been used) on start
 function newdice() {
-
+    //Player 1 new dice on start of turn
     var randomStartDice1 = diceOptionsplayer1[Math.floor(Math.random() * diceOptionsplayer1.length)];
     startdice1.src = "static/dice_img/d-" + randomStartDice1 + ".jpg"
     diceValue = randomStartDice1;
-
+    //Player 2/computer new dice on start of turn
     var randomStartDice2 = diceOptionsplayer2[Math.floor(Math.random() * diceOptionsplayer2.length)];
     startdice2.src = "static/dice_img/d-" + randomStartDice2 + ".jpg"
     diceValue = randomStartDice2;
 };
 
+
+//Function to roll the dice on Roll btn or clicked on the dice
 function rollDice() {
 
     //Dice roll
@@ -87,24 +99,29 @@ function rollDice() {
         $(".rollResult").html("Please select a dice");
     };
 
+
     //change player
-
-
+    //Player 1- set dice and roll to variable
     if (document.getElementById("player1playarea").classList.contains("activePlayer")) {
         player1score = dice;
         player1dice = diceValue;
-
+        //change Player
         change1();
         change1extra();
 
+
+        //Player 2 or computer- set dice and roll to variable
     } else {
         player2score = dice;
         player2dice = diceValue;
-
+        //change Player
         change2();
         change2extra();
+
     };
 
+    //If both players have played a dice on the same turn
+    //Update History
     if (player2score > 0 && player1score > 0) {
         console.log("both scored");
 
@@ -114,31 +131,60 @@ function rollDice() {
 
         document.getElementById("history").appendChild(newHistory);
 
+        //Update score player 1
         if (player1score > player2score) {
-            player1score = player1score + 1;
+            player1score += 1;
 
+            //Show player 1 dice won on a turn
             let changeOne = document.getElementById('player1score-' + roundValue);
             changeOne.classList.add("winner");
-            console.log("change for winner1");
 
             //to stop changes if won twice
+            //function to stop winning twice bug, stops changes
+            if (player1PointCounter === 0) {
+                change1();
+                change1extra();
+                console.log("change function play1");
+                console.log("player 1A" + player1PointCounter);
+                player1PointCounter = 1;
+                console.log("player 1A" + player1PointCounter);
+                player2PointCounter = 0;
+            } else {
 
-            ///////////need to add a for loop to stop double wins
 
-            change2();
-            change2extra();
+                player2PointCounter = 0;
+                console.log("player 2A" + player2PointCounter);
+            };
+
+
+            //Update score player 2 or computer
         } else if (player1score < player2score) {
-            player2score = player2score + 1;
+            player2score += 1;
 
+            //Show player 2 or computure dice won on a turn
             let changeTwo = document.getElementById('player2score-' + roundValue);
             changeTwo.classList.add("winner");
-            console.log("change for winner2");
 
-            change1();
-            change1extra();
+            if (player2PointCounter === 0) {
+                change2();
+                change2extra();
+                console.log("change function play2");
+                console.log("player 2B" + player2PointCounter);
+                player2PointCounter = 1;
+                console.log("player 2B" + player2PointCounter);
+                player1PointCounter = 0;
+            } else {
+
+
+                player1PointCounter = 0;
+                console.log("player 1B" + player1PointCounter);
+            };
+
         } else {
 
-        }
+        };
+
+
 
 
 
@@ -203,8 +249,8 @@ function getPlayerData() {
     }
 };
 
-///////////////////////////////////
-//Clear history and set score
+
+//Clear history and set score on new Game
 let player1Info;
 let player2Info;
 
@@ -241,6 +287,7 @@ function reset() {
 
 ///////////////////////////////////
 //Random player to start the game
+//Change settings on players turn
 let randomPlayer;
 let winner;
 
@@ -263,23 +310,27 @@ let startdice2 = document.getElementById("showndice2");
 
 //deactive player 2 div
 function change1() {
+    //active player board and disable other player
     player1Area.classList.toggle("disabled");
     player2Area.classList.toggle("activePlayer");
+
     //deactive dice area player 2
     showDice1.classList.toggle("diceRowValue");
+
     //active roll btn
     activeRollBtn2.classList.toggle("active");
+
     //active roll result
     rollResult2.classList.toggle("rollResult");
+
     //get options from dice
     //active dice area
     activeDice = document.getElementById('showndice1');
     playerDiceScore = player1score;
-    console.log("change player1")
+
 };
 
-//extra for switching while playing
-
+//extra for switching while playing not needed on setup
 
 function change1extra() {
     player2Area.classList.toggle("disabled");
@@ -315,7 +366,7 @@ function change2() {
     playerDiceScore = player2score;
 
 };
-
+//extra for switching while playing not needed on setup
 function change2extra() {
     player1Area.classList.toggle("disabled");
     player2Area.classList.toggle("activePlayer");
@@ -328,7 +379,7 @@ function change2extra() {
 
 };
 
-//function to see who goes first
+//function to see who goes first on new game
 function randomStarter() {
     randomPlayer = Math.floor(Math.random() * 2 + 1);
 
@@ -342,8 +393,10 @@ function randomStarter() {
 
         //Change inner html to show player-1 turn
         player1Info.innerHTML = "changed";
-
+        player1PointCounter = 1;
+        player2PointCounter = 0;
         change1();
+        console.log("player 1 goes first");
 
     } else {
         //Change inner html to show player-2 turn
@@ -352,7 +405,10 @@ function randomStarter() {
 
         //Change inner html to show player-1 turn
         player2Info.innerHTML = "playerTwoInfo";
+        player1PointCounter = 0;
+        player2PointCounter = 1;
         change2();
+        console.log("player 2 goes first");
 
     };
 }
@@ -375,7 +431,7 @@ document.getElementById("start-btn").addEventListener("click", function() {
     //Get player player and change to their name in HTML
     getPlayerData();
 
-    //computer as player check
+    //computer as player 2
 
 
     //reset score and history

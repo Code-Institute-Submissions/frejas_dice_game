@@ -119,6 +119,13 @@ function rollDice() {
         for (var i = diceOptionsplayer1.length - 1; i >= 0; --i) {
             if (diceOptionsplayer1[i] == diceValue) {
                 diceOptionsplayer1.splice(i, 1);
+            };
+
+            if (diceOptionsplayer1 === undefined || diceOptionsplayer1.length == 0) {
+                $('#showndice1').hide();
+                $('#player1btn').addClass('disabled');
+                console.log("player 1 array empty");
+
             }
         }
 
@@ -139,6 +146,12 @@ function rollDice() {
         for (var i = diceOptionsplayer2.length - 1; i >= 0; --i) {
             if (diceOptionsplayer2[i] == diceValue) {
                 diceOptionsplayer2.splice(i, 1);
+            };
+            if (diceOptionsplayer1 === undefined || diceOptionsplayer1.length == 0) {
+                $('#showndice2').hide();
+                $('#player2btn').addClass('disabled');
+                console.log("player 2 array empty");
+
             }
         }
 
@@ -254,17 +267,9 @@ function getPlayerData() {
 //End game
 
 function finishedGame() {
-    if (diceOptionsplayer1.length = 0) {
-
-        $('#showndice1').hide();
-        $('#player1btn').addClass('disabled');
-    };
-
-    if (diceOptionsplayer2.length = 0) {
-
-        $('#showndice2').hide();
-        $('#player2btn').addClass('disabled');
-    };
+    if (diceOptionsplayer1 === undefined || diceOptionsplayer1.length == 0 || diceOptionsplayer2 === undefined || diceOptionsplayer2.length == 0) {
+        console.log("both have empty arrays");
+    }
 }
 
 

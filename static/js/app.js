@@ -63,10 +63,12 @@ function gamePlay() {
     $('.dice').on('mouseenter', function() {
         diceValue = $(this).val();
         activeDice.src = "static/dice_img/d-" + diceValue + ".jpg";
+        activeDice.setAttribute("value", diceValue);
     });
 
     //roll the dice on btn
     $('.roll').click(function() {
+        diceValue = activeDice.getAttribute("value");
         rollDice();
     });
 
@@ -75,23 +77,27 @@ function gamePlay() {
 //start with random dice (thats not been used) on start
 function newdice() {
     //Player 1 new dice on start of turn
-    var randomStartDice1 = diceOptionsplayer1[Math.floor(Math.random() * diceOptionsplayer1.length)];
-    startdice1.src = "static/dice_img/d-" + randomStartDice1 + ".jpg"
+    randomStartDice1 = diceOptionsplayer1[Math.floor(Math.random() * diceOptionsplayer1.length)];
+    startdice1.src = "static/dice_img/d-" + randomStartDice1 + ".jpg";
+    startdice1.setAttribute("value", randomStartDice1);
+
     diceValue = randomStartDice1;
+
     //Player 2/computer new dice on start of turn
-    var randomStartDice2 = diceOptionsplayer2[Math.floor(Math.random() * diceOptionsplayer2.length)];
-    startdice2.src = "static/dice_img/d-" + randomStartDice2 + ".jpg"
+    randomStartDice2 = diceOptionsplayer2[Math.floor(Math.random() * diceOptionsplayer2.length)];
+    startdice2.src = "static/dice_img/d-" + randomStartDice2 + ".jpg";
+    startdice2.setAttribute("value", randomStartDice2);
+
     diceValue = randomStartDice2;
+
 };
 
 //Function to roll the dice on Roll btn or clicked on the dice
 function rollDice() {
 
+
     //Dice roll
     dice = Math.floor(Math.random() * diceValue + 1);
-
-    //set the dice roll to the player playing
-    let playerDiceScore = dice;
 
     //error protection on player not selecting a dice
     if (diceValue > 0) {
@@ -104,6 +110,8 @@ function rollDice() {
     //change player
     //Player 1- set dice and roll to variable
     if (document.getElementById("player1playarea").classList.contains("activePlayer")) {
+
+
         player1score = dice;
         player1dice = diceValue;
 
@@ -119,15 +127,10 @@ function rollDice() {
         for (var i = diceOptionsplayer1.length - 1; i >= 0; --i) {
             if (diceOptionsplayer1[i] == diceValue) {
                 diceOptionsplayer1.splice(i, 1);
-            };
-
-            if (diceOptionsplayer1 === undefined || diceOptionsplayer1.length == 0) {
-                $('#showndice1').hide();
-                $('#player1btn').addClass('disabled');
-                console.log("player 1 array empty");
-
+                console.log(diceOptionsplayer1);
             }
         }
+
 
         //Player 2 or computer- set dice and roll to variable
     } else {
@@ -146,13 +149,9 @@ function rollDice() {
         for (var i = diceOptionsplayer2.length - 1; i >= 0; --i) {
             if (diceOptionsplayer2[i] == diceValue) {
                 diceOptionsplayer2.splice(i, 1);
+                console.log(diceOptionsplayer2);
             };
-            if (diceOptionsplayer1 === undefined || diceOptionsplayer1.length == 0) {
-                $('#showndice2').hide();
-                $('#player2btn').addClass('disabled');
-                console.log("player 2 array empty");
 
-            }
         }
 
     };
@@ -265,13 +264,13 @@ function getPlayerData() {
 
 
 //End game
-
+/*
 function finishedGame() {
-    if (diceOptionsplayer1 === undefined || diceOptionsplayer1.length == 0 || diceOptionsplayer2 === undefined || diceOptionsplayer2.length == 0) {
+    if (diceOptionsplayer1.length == 0 || diceOptionsplayer2.length == 0) {
         console.log("both have empty arrays");
     }
 }
-
+*/
 
 
 
@@ -452,5 +451,5 @@ document.getElementById("start-btn").addEventListener("click", function() {
     gamePlay();
 
     //end of game
-    finishedGame();
+
 });

@@ -59,10 +59,6 @@ div {
     opacity: 0.4;
 }
 
-.dice-value.disabled {
-    opacity: 0.4;
-}
-
 .dice img {
     object-fit: contain;
     max-width: 100%;

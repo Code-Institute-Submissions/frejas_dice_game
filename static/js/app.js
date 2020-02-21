@@ -11,29 +11,34 @@ Die can only used once per game or if total game score is higher than die number
 */
 
 //score of each player/computer
-let player1score = 0;
-let player2score = 0;
+let player1Score = 0;
+let player2Score = 0;
 
 let player1Total = 0;
 let player2Total = 0;
+
 //round counter
 let roundValue = 1;
+
 //which player turn
 let activePlayer = 0;
 let diceValue = 0;
 let activeDice;
+
 //avaible dice to use
-let diceOptionsplayer1 = [4, 6, 8, 12, 20];
-let diceOptionsplayer2 = [4, 6, 8, 12, 20];
+let diceOptionsPlayer1 = [4, 6, 8, 12, 20];
+let diceOptionsPlayer2 = [4, 6, 8, 12, 20];
+
 //random dice on start of turn thats playable
 let randomStartDice1;
 let randomStartDice2;
 
-let player1dice;
-let player2dice;
+let player1Dice;
+let player2Dice;
 
 let dice;
-//for a catch loop to insure to stop a double win change
+
+//for a catch loop to insure to stop a double win bug
 let player1PointCounter = 0;
 let player2PointCounter = 0;
 
@@ -42,7 +47,7 @@ let player2PointCounter = 0;
 function gamePlay() {
 
     //get new dice on starting area
-    newdice();
+    newDice();
 
     //If a die has been clicked
     $('.dice').click(function() {
@@ -74,27 +79,25 @@ function gamePlay() {
 };
 
 //start with random dice (thats not been used) on start
-function newdice() {
+function newDice() {
     //Player 1 new dice on start of turn
-    randomStartDice1 = diceOptionsplayer1[Math.floor(Math.random() * diceOptionsplayer1.length)];
-    //If the array is empty, if statement to stop blank img
-    if (diceOptionsplayer1.length > 0) {
-        startdice1.src = "static/dice_img/d-" + randomStartDice1 + ".jpg";
+    randomStartDice1 = diceOptionsPlayer1[Math.floor(Math.random() * diceOptionsPlayer1.length)];
+    //If the array is empty, 'if statement' to stop blank img
+    if (diceOptionsPlayer1.length > 0) {
+        startDice1.src = "static/dice_img/d-" + randomStartDice1 + ".jpg";
     };
     //set dice value from random starting dice
-    startdice1.setAttribute("value", randomStartDice1);
-
+    startDice1.setAttribute("value", randomStartDice1);
     diceValue = randomStartDice1;
 
     //Player 2/computer new dice on start of turn
-    randomStartDice2 = diceOptionsplayer2[Math.floor(Math.random() * diceOptionsplayer2.length)];
+    randomStartDice2 = diceOptionsPlayer2[Math.floor(Math.random() * diceOptionsPlayer2.length)];
     //If the array is empty, if statement to stop blank img
-    if (diceOptionsplayer2.length > 0) {
-        startdice2.src = "static/dice_img/d-" + randomStartDice2 + ".jpg";
+    if (diceOptionsPlayer2.length > 0) {
+        startDice2.src = "static/dice_img/d-" + randomStartDice2 + ".jpg";
     };
     //set dice value from random starting dice
-    startdice2.setAttribute("value", randomStartDice2);
-
+    startDice2.setAttribute("value", randomStartDice2);
     diceValue = randomStartDice2;
 
 };
@@ -105,79 +108,61 @@ function rollDice() {
     //Dice roll
     dice = Math.floor(Math.random() * diceValue + 1);
 
-    //error protection on player not selecting a dice
     if (diceValue > 0) {
         $(".rollResult").html("You rolled a value of " + dice);
-
-    } else {
-        $(".rollResult").html("Please select a dice");
     };
 
     //change player
     //Player 1- set dice and roll to variable
-    if (document.getElementById("player1playarea").classList.contains("activePlayer")) {
-        player1score = dice;
-        player1dice = diceValue;
+    if (document.getElementById("player1PlayArea").classList.contains("activePlayer")) {
+        player1Score = dice;
+        player1Dice = diceValue;
 
         //change Player
         change1();
-        change1extra();
+        change1Extra();
 
         //disable dice from btn click instead of dice click
         $('#player1-d' + diceValue).addClass('disabled');
 
         //remove players choice from their array- Used for computer selecting and also starting dice
+        for (var i = diceOptionsPlayer1.length - 1; i >= 0; --i) {
+            if (diceOptionsPlayer1[i] == diceValue) {
+                diceOptionsPlayer1.splice(i, 1);
 
-        for (var i = diceOptionsplayer1.length - 1; i >= 0; --i) {
-            if (diceOptionsplayer1[i] == diceValue) {
-                diceOptionsplayer1.splice(i, 1);
-                console.log(diceOptionsplayer1);
             };
             //when the array for Player1 is empty, stop btns
-            if (diceOptionsplayer1.length == 0) {
-                $('#showndice1').hide();
-                $('#player1btn').addClass('disabled');
-                $('#player1btn').removeClass('active');
+            if (diceOptionsPlayer1.length == 0) {
+                $('#shownDice1').addClass('disabled');
+                $('#player1Btn').addClass('disabled');
+                $('#player1Btn').removeClass('active');
             }
         }
 
-
-        //add className of percentages
-        let player1diceRow = document.getElementsByClassName('player-1-dice');
-
-        if (player2score > 0) {
-            for (var i = 0; i < diceOptionsplayer1.length; i++) {
-                if (diceOptionsplayer1[i].value > player1score)
-                    $(this).addClass("testing");
-                console.log("testing player 1 row");
-            }
-        };
-
-
-        //Player 2 or computer- set dice and roll to variable
     } else {
-        player2score = dice;
-        player2dice = diceValue;
+        //Player 2 or computer- set dice and roll to variable
+        player2Score = dice;
+        player2Dice = diceValue;
 
         //change Player
         change2();
-        change2extra();
+        change2Extra();
 
         //disable dice from btn click instead of dice click
         $('#player2-d' + diceValue).addClass('disabled');
 
         //remove players choice from their array- Used for computer selecting and also starting dice
-        for (var i = diceOptionsplayer2.length - 1; i >= 0; --i) {
-            if (diceOptionsplayer2[i] == diceValue) {
-                diceOptionsplayer2.splice(i, 1);
-                console.log(diceOptionsplayer2);
+        for (var i = diceOptionsPlayer2.length - 1; i >= 0; --i) {
+            if (diceOptionsPlayer2[i] == diceValue) {
+                diceOptionsPlayer2.splice(i, 1);
+                console.log(diceOptionsPlayer2);
             };
 
             //when the array for Player1 is empty, stop btns
-            if (diceOptionsplayer2.length == 0) {
-                $('#showndice2').hide();
-                $('#player2btn').addClass('disabled');
-                $('#player2btn').removeClass('active');
+            if (diceOptionsPlayer2.length == 0) {
+                $('#shownDice2').addClass('disabled');
+                $('#player2Btn').addClass('disabled');
+                $('#player2Btn').removeClass('active');
             }
         }
     };
@@ -186,64 +171,64 @@ function rollDice() {
 
     //If both players have played a dice on the same turn
     //Update History
-    if (player2score > 0 && player1score > 0) {
+    if (player2Score > 0 && player1Score > 0) {
 
         // show history of score and dice
         let newHistory = document.createElement('div');
-        newHistory.innerHTML = '<div class="row histroy-row" id="histroy-row"><!--Round counter--><div class="col-3 round-counter" id="roundcounter"><h4>' + roundValue + ':</h4></div><!--Player 1 score and used dice--><div class="col dice-history"><button class="diceHistory" id="' + player1dice + '"value="' + player1dice + '"><img src="static/dice_img/d-' + player1dice + '.jpg"/></button><div id="player1score-' + roundValue + '"> ' + player1score + '</div></div><!--Player 2 score and used dice--><div class="col dice-history"><button class="diceHistory" id="' + player2dice + ' value="' + player2dice + '><img src="static/dice_img/d-' + player2dice + '.jpg"/></button><div id="player2score-' + roundValue + '"> ' + player2score + '</div></div></div>'
+        newHistory.innerHTML = '<div class="row histroyRow" id="histroyRow"><!--Round counter--><div class="col-3 roundCounter" id="roundCounter"><h4>' + roundValue + ':</h4></div><!--Player 1 score and used dice--><div class="col diceHistory"><button class="diceHistory" id="' + player1Dice + '"value="' + player1Dice + '"><img src="static/dice_img/d-' + player1Dice + '.jpg"/></button><div id="player1Score' + roundValue + '"> ' + player1Score + '</div></div><!--Player 2 score and used dice--><div class="col diceHistory"><button class="diceHistory" id="' + player2Dice + ' value="' + player2Dice + '><img src="static/dice_img/d-' + player2Dice + '.jpg"/></button><div id="player2Score' + roundValue + '"> ' + player2Score + '</div></div></div>'
 
         document.getElementById("history").appendChild(newHistory);
         //New dice on 
-        newdice();
+        newDice();
 
         //Update score player 1
-        if (player1score > player2score) {
+        if (player1Score > player2Score) {
             player1Total += 1;
-            document.getElementById('player-1-score').innerText = player1Total;
+            document.getElementById('player1Score').innerText = player1Total;
 
             //Show player 1 dice won on a turn
-            let changeOne = document.getElementById('player1score-' + roundValue);
+            let changeOne = document.getElementById('player1Score' + roundValue);
             changeOne.classList.add("winner");
 
             //to stop changes if won twice
             //function to stop winning twice bug, stops changes
             if (player1PointCounter === 0) {
                 change1();
-                change1extra();
+                change1Extra();
                 player1PointCounter = 1;
                 player2PointCounter = 0;
-                activeDice = document.getElementById('showndice1');
+                activeDice = document.getElementById('shownDice1');
             } else {
-                activeDice = document.getElementById('showndice1');
+                activeDice = document.getElementById('shownDice1');
                 player2PointCounter = 0;
             }
-        } else if (player1score < player2score) {
+        } else if (player1Score < player2Score) {
             //Update score player 2 or computer
             player2Total += 1;
-            document.getElementById('player-2-score').innerText = player2Total;
+            document.getElementById('player2Score').innerText = player2Total;
 
             //Show player 2 or computure dice won on a turn
-            let changeTwo = document.getElementById('player2score-' + roundValue);
+            let changeTwo = document.getElementById('player2Score' + roundValue);
             changeTwo.classList.add("winner");
 
             //to stop changes if won twice
             //function to stop winning twice bug, stops changes
             if (player2PointCounter === 0) {
                 change2();
-                change2extra();
+                change2Extra();
                 player2PointCounter = 1;
                 player1PointCounter = 0;
-                activeDice = document.getElementById('showndice2');
+                activeDice = document.getElementById('shownDice2');
             } else {
-                activeDice = document.getElementById('showndice2');
+                activeDice = document.getElementById('shownDice2');
                 player1PointCounter = 0;
             };
         }
 
-        player2score = 0;
-        player1dice = 0;
-        player1score = 0;
-        player2dice = 0;
+        player2Score = 0;
+        player1Dice = 0;
+        player1Score = 0;
+        player2Dice = 0;
         roundValue += 1;
     }
 }
@@ -280,8 +265,8 @@ function getPlayerData() {
     };
 
     //Change the name from HTML
-    player1Name = document.getElementsByClassName("player-1-name");
-    player2Name = document.getElementsByClassName("player-2-name");
+    player1Name = document.getElementsByClassName("player1Name");
+    player2Name = document.getElementsByClassName("player2Name");
     for (var i = 0; i < player1Name.length; i++) {
         player1Name[i].innerHTML = player1;
         player2Name[i].innerHTML = player2;
@@ -293,14 +278,14 @@ function getPlayerData() {
 
 //End game
 function finishedGame() {
-    if (diceOptionsplayer1.length == 0 && diceOptionsplayer2.length == 0) {
+    if (diceOptionsPlayer1.length == 0 && diceOptionsPlayer2.length == 0) {
         console.log("both have empty arrays");
     }
 }
 
 //Get and apply percentages
 function percentages() {
-    if (player1score > 0) {
+    if (player1Score > 0) {
 
     }
 }
@@ -318,14 +303,11 @@ function reset() {
     //Clear html for new start
     //clear Histroy
     const clearHistory = (elms) => elms.forEach(el => el.remove());
-    clearHistory(document.querySelectorAll(".histroyrow"));
+    clearHistory(document.querySelectorAll("#histroyRow"));
 
     //clear player info row
-    player1Info = (document.querySelectorAll(".player-1-info"));
-    player2Info = (document.querySelectorAll(".player-2-info"));
-
-    //clearHistory(player1Info);
-    //clearHistory(player2Info);
+    player1Info = (document.querySelectorAll(".player1Info"));
+    player2Info = (document.querySelectorAll(".player2Info"));
 
     //add default line for history
     let starterLine = document.createElement('div');
@@ -333,10 +315,10 @@ function reset() {
     document.getElementById("history").appendChild(starterLine);
 
     //Reset score to 0-0
-    document.getElementById('player-1-score').textContent = '0';
-    document.getElementById('player-2-score').textContent = '0';
-    player1score = 0;
-    player2score = 0;
+    document.getElementById('player1Score').textContent = '0';
+    document.getElementById('player2Score').textContent = '0';
+    player1Score = 0;
+    player2Score = 0;
 
 };
 
@@ -346,20 +328,20 @@ function reset() {
 let randomPlayer;
 let winner;
 
-let player1Area = document.getElementById("player1playarea");
-let player2Area = document.getElementById("player2playarea");
+let player1Area = document.getElementById("player1PlayArea");
+let player2Area = document.getElementById("player2PlayArea");
 
 let showDice1 = document.getElementById("showPlayer1Dice");
 let showDice2 = document.getElementById("showPlayer2Dice");
 
-let activeRollBtn1 = document.getElementById("player1btn");
-let activeRollBtn2 = document.getElementById("player2btn");
+let activeRollBtn1 = document.getElementById("player1Btn");
+let activeRollBtn2 = document.getElementById("player2Btn");
 
-let rollResult1 = document.getElementById("player-1-info");
-let rollResult2 = document.getElementById("player-2-info");
+let rollResult1 = document.getElementById("player1Info");
+let rollResult2 = document.getElementById("player2Info");
 
-let startdice1 = document.getElementById("showndice1");
-let startdice2 = document.getElementById("showndice2");
+let startDice1 = document.getElementById("shownDice1");
+let startDice2 = document.getElementById("shownDice2");
 
 //deactive player 2 div
 function change1() {
@@ -378,19 +360,19 @@ function change1() {
 
     //get options from dice
     //active dice area
-    activeDice = document.getElementById('showndice1');
-    playerDiceScore = player1score;
+    activeDice = document.getElementById('shownDice1');
+    playerDiceScore = player1Score;
 };
 
 //extra for switching while playing not needed on setup
 
-function change1extra() {
+function change1Extra() {
     player2Area.classList.toggle("disabled");
     player1Area.classList.toggle("activePlayer");
     //active roll btn
     activeRollBtn1.classList.toggle("active");
     rollResult1.classList.toggle("rollResult");
-    activeDice = document.getElementById('showndice2');
+    activeDice = document.getElementById('shownDice2');
 
     console.log("change 1 extra");
 };
@@ -411,18 +393,18 @@ function change2() {
     //get options from dice
 
     //active dice area
-    activeDice = document.getElementById('showndice2');
-    playerDiceScore = player2score;
+    activeDice = document.getElementById('shownDice2');
+    playerDiceScore = player2Score;
 };
 
 //extra for switching while playing not needed on setup
-function change2extra() {
+function change2Extra() {
     player1Area.classList.toggle("disabled");
     player2Area.classList.toggle("activePlayer");
     //active roll btn
     activeRollBtn2.classList.toggle("active");
     rollResult2.classList.toggle("rollResult");
-    activeDice = document.getElementById('showndice1');
+    activeDice = document.getElementById('shownDice1');
 
     console.log("change 2 extra");
 };

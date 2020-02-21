@@ -6,18 +6,15 @@ body {
     height: 100vh;
 }
 
-.main {
-    margin: 0px 30px 30px 30px;
-}
-
-.table-area,
+.tableArea,
 .gameArea {
     border-radius: 20px;
     height: 90vh;
+    margin-left: 15px;
 }
 
-.player1playarea,
-.player2playarea {
+.player1PlayArea,
+.player2PlayArea {
     width: 100%;
     height: 45%;
     background-color: rgba(238, 241, 236, 0.322);
@@ -30,13 +27,18 @@ div {
     justify-content: center;
 }
 
-.player-1-dice,
-.player-2-dice {
+col {
+    padding: 0px !important;
+}
+
+.player1Dice,
+.player2Dice {
     height: 20%;
     display: inline-block;
 }
 
-.dice {
+.dice,
+.dice-value {
     height: 100%;
     max-height: 100px;
     max-width: 80px;
@@ -45,14 +47,6 @@ div {
     border-radius: 10px;
     border-color: black;
     background-color: azure;
-}
-
-.dice:hover {
-    max-height: 125px;
-    height: 15%;
-    width: 15%;
-    max-width: 125px;
-    border-color: yellow;
 }
 
 .dice.disabled {
@@ -70,17 +64,6 @@ div {
     display: none;
 }
 
-.dice-value {
-    height: 100%;
-    max-height: 100px;
-    max-width: 80px;
-    width: 80%;
-    margin: 5px;
-    border-radius: 10px;
-    border-color: black;
-    background-color: azure;
-}
-
 .dice-value img {
     object-fit: contain;
     max-width: 80%;
@@ -88,7 +71,7 @@ div {
     background-position: center;
 }
 
-.score-box {
+.scoreBox {
     height: 50px;
     width: 50px;
     border-radius: 5px;
@@ -102,7 +85,7 @@ div {
     background-color: rgba(63, 191, 127, 0.75);
 }
 
-.table-area {
+.tableArea {
     border-radius: 20px;
     border: black 1px solid;
     background-color: rgba(238, 241, 236, 0.322);
@@ -112,23 +95,25 @@ div {
     background-color: rgba(67, 75, 180, 0.4);
 }
 
-.player-1,
-.player-2 {
+.player1,
+.player2 {
     text-align: center;
+    padding: 0px !important;
 }
 
-.score-box {
+.scoreBox {
     display: inline-block;
 }
 
 .diceHistory {
-    max-height: 50px;
-    max-width: 50px;
+    height: 50px;
+    width: 50px;
     margin: 5px;
-    border-radius: 5px;
-    border: black solid 1px;
-    background-color: azure;
     padding: 0px;
+}
+
+.diceHistory.roundCounter {
+    top: 0px;
 }
 
 .diceHistory img {
@@ -142,12 +127,10 @@ div {
     text-align: center;
 }
 
-.history-row {
-    display: inline-block;
-}
-
-.round-counter {
-    top: 10px;
+.historyRow {
+    width: 100%;
+    margin: 0 !important;
+    height: 100px;
 }
 
 
@@ -199,9 +182,13 @@ select {
 /* Disabled area*/
 
 .disabled {
-    pointer-events: none !important;
+    pointer-events: none;
 }
 
 .activePlayer {
     background-color: rgba(63, 191, 127, 0.46);
+}
+
+.disabled.activePlayer {
+    pointer-events: all !important;
 }

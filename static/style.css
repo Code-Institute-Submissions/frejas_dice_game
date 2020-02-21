@@ -33,12 +33,13 @@ col {
 
 .player1Dice,
 .player2Dice {
-    height: 20%;
+    max-height: 20vh;
     display: inline-block;
 }
 
 .dice,
-.dice-value {
+.dice-value,
+.shownDice {
     height: 100%;
     max-height: 100px;
     max-width: 80px;
@@ -221,5 +222,5 @@ select {
 }
 
 .worst {
-    border-color: red;
+    border-color: darkgrey;
 }

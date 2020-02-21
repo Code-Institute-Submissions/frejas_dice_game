@@ -30,7 +30,7 @@ Order:
 //Clear history and set score on new Game
 function reset() {
     //clear Histroy
-    const clearHistory = (elms) => elms.forEach(el => el.remove());
+    let clearHistory = (elms) => elms.forEach(el => el.remove());
     clearHistory(document.querySelectorAll("#histroyRow"));
 
     //add default line for history
@@ -46,7 +46,7 @@ function reset() {
     player1Total = 0;
     player2Total = 0;
     roundValue = 1;
-};
+}
 
 //Start Mondal and get player info
 //Get Local players Name from Modal 
@@ -54,13 +54,13 @@ let player1, player2, player1Name, player2Name, player1Area, player2Area;
 
 //Modal open on page ready
 $(window).on('load', function() {
-    $("#introModal").modal('show')
+    $("#introModal").modal('show');
 });
 
 //close modal
 function closeModal() {
     $("#introModal").modal('hide');
-};
+}
 
 function getPlayerData() {
     //Get local player names from form input
@@ -69,11 +69,11 @@ function getPlayerData() {
 
     //Set default Name if no input for player names
     if (player1 == 0) {
-        player1 = "Player 1"
-    };
+        player1 = "Player 1";
+    }
     if (player2 == 0) {
-        player2 = "Player 2"
-    };
+        player2 = "Player 2";
+    }
 
     //Change the name from HTML
     player1Name = document.getElementsByClassName("player1Name");
@@ -82,10 +82,10 @@ function getPlayerData() {
         player1Name[i].innerHTML = player1;
         player2Name[i].innerHTML = player2;
     }
-};
+}
 
 //Game Play
-let dice, getPercentage, activeDice, player1Total, player2Total, roundValue, player1Score, player2Score, randomPlayer, showDice1, rollResult1, rollResult2, showDice2, startDice, diceValue, randomStartDice1, randomStartDice2, startDice1, startDice2, activeRollBtn1, activeRollBtn2;
+let dice, activeDice, player1Total, player2Total, roundValue, player1Score, player2Score, randomPlayer, showDice1, rollResult1, rollResult2, showDice2, diceValue, randomStartDice1, randomStartDice2, startDice1, startDice2, activeRollBtn1, activeRollBtn2;
 
 //avaible dice to use in array
 let diceOptionsPlayer1 = [4, 6, 8, 12, 20];
@@ -98,7 +98,7 @@ function randomStarter() {
         setUpPlayer1();
     } else {
         setUpPlayer2();
-    };
+    }
 }
 
 //DOM
@@ -132,7 +132,7 @@ function setUpPlayer1() {
     rollResult2.classList.toggle("rollResult");
 
     activeDice = document.getElementById('shownDice1');
-};
+}
 
 //deactive player 1 div
 function setUpPlayer2() {
@@ -145,16 +145,13 @@ function setUpPlayer2() {
     rollResult1.classList.toggle("rollResult");
 
     activeDice = document.getElementById('shownDice2');
-};
-
+}
 
 //Game function
 function gamePlay() {
     diceValue = 0;
     //get new dice on starting area
     newdice();
-
-
 
     //If a die has been clicked
     $('.dice').click(function() {
@@ -163,16 +160,10 @@ function gamePlay() {
         //show new dice
         activeDice.src = "static/dice_img/d-" + diceValue + ".jpg";
 
-
-        //console.log($(this).attr("percentage"));
-
-
         //roll the dice if clicked
         rollDice();
         showPercentage();
         diceValue = 0;
-
-
     });
 
     //change dice on mouse enter
@@ -186,17 +177,13 @@ function gamePlay() {
             if (diceValue != 0) {
                 $(".rollResult").html("D" + diceValue + " has a " + $(this).attr("percentage") + "% chance to win!");
             }
-        };
+        }
         if (player2Help.checked && player1Score > 0) {
             showPercentage();
             if (diceValue != 0) {
-
                 $(".rollResult").html("D" + diceValue + " has a " + $(this).attr("percentage") + "% chance to win!");
             }
-        };
-
-
-
+        }
     });
 
     //roll the dice on btn
@@ -206,39 +193,23 @@ function gamePlay() {
         rollDice();
         showPercentage();
         diceValue = 0;
-
     });
-};
+}
 
 function showPercentage() {
     if (player1Help.checked && player2Score > 0) {
         diceOptions = diceOptionsPlayer1;
         score = player2Score;
         display = '#player1-d';
-
         percentage();
     }
-
     if (player2Help.checked && player1Score > 0) {
         diceOptions = diceOptionsPlayer2;
         score = player1Score;
         display = '#player2-d';
-
         percentage();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 //start with random dice (thats not been used) on start
 function newdice() {
@@ -247,7 +218,7 @@ function newdice() {
     //If the array is empty, 'if' statement to stop blank img
     if (diceOptionsPlayer1.length > 0) {
         startDice1.src = "static/dice_img/d-" + randomStartDice1 + ".jpg";
-    };
+    }
     //set dice value from random starting dice
     startDice1.setAttribute("value", randomStartDice1);
     diceValue = randomStartDice1;
@@ -257,13 +228,11 @@ function newdice() {
     //If the array is empty, if statement to stop blank img
     if (diceOptionsPlayer2.length > 0) {
         startDice2.src = "static/dice_img/d-" + randomStartDice2 + ".jpg";
-    };
+    }
     //set dice value from random starting dice
     startDice2.setAttribute("value", randomStartDice2);
     diceValue = randomStartDice2;
-};
-
-
+}
 
 //Function to roll the dice on Roll btn or clicked on the dice
 function rollDice() {
@@ -272,59 +241,49 @@ function rollDice() {
     //error protection on player not selecting a dice
     if (diceValue > 0) {
         $(".rollResult").html("You rolled a value of " + dice);
-    };
-
+    }
     //Set score to player
     if (player1Area.classList.contains("activePlayer")) {
         player1Score = dice;
         player1Dice = diceValue;
-
         //disable dice from btn click instead of dice click
         $('#player1-d' + diceValue).addClass('disabled');
-
-        for (var i = diceOptionsPlayer1.length - 1; i >= 0; --i) {
+        for (let i = diceOptionsPlayer1.length - 1; i >= 0; --i) {
             if (diceOptionsPlayer1[i] == diceValue) {
                 diceOptionsPlayer1.splice(i, 1);
             }
-        };
-
+        }
         //when the array for Player1 is empty, stop btns
         if (diceOptionsPlayer1.length == 0) {
             $('#shownDice1').addClass('disabled');
             $('#player1Btn').addClass('disabled');
             $('#player1Btn').removeClass('active');
         }
-
     } else {
         player2Score = dice;
         player2Dice = diceValue;
-
         //disable dice from btn click instead of dice click
         $('#player2-d' + diceValue).addClass('disabled');
-
-        for (var i = diceOptionsPlayer2.length - 1; i >= 0; --i) {
-            if (diceOptionsPlayer2[i] == diceValue) {
-                diceOptionsPlayer2.splice(i, 1);
+        for (let b = diceOptionsPlayer2.length - 1; b >= 0; --b) {
+            if (diceOptionsPlayer2[b] == diceValue) {
+                diceOptionsPlayer2.splice(b, 1);
                 console.log("pl2 " + diceOptionsPlayer2);
             }
-        };
-
+        }
         //when the array for Player1 is empty, stop btns
         if (diceOptionsPlayer2.length == 0) {
             $('#shownDice2').addClass('disabled');
             $('#player2Btn').addClass('disabled');
             $('#player2Btn').removeClass('active');
-        };
-    };
-
+        }
+    }
     //Change Players if one has a score and the other player has not
     if (player1Score == 0 || player2Score == 0) {
         //Change Player after roll
         changePlayer();
         //Clear text of result
         $(".rollResult").html("Please select a die");
-    };
-
+    }
     //If both players have played- Set the winner for next turn
     if (player1Score !== 0 && player2Score !== 0) {
         removePercentage();
@@ -332,11 +291,10 @@ function rollDice() {
         //Change player: stop double win bug
         if (player1Area.classList.contains("activePlayer") && player2Score > player1Score) {
             changePlayer();
-        };
+        }
         if (player2Area.classList.contains("activePlayer") && player1Score > player2Score) {
             changePlayer();
-        };
-
+        }
         //Update score
         if (player1Score > player2Score) {
             player1Total += 1;
@@ -344,7 +302,6 @@ function rollDice() {
             history();
             let changeOne = document.getElementById('player1Score' + roundValue);
             changeOne.classList.add("winner");
-
         } else {
             player2Total += 1;
             document.getElementById('player2Score').innerText = player2Total;
@@ -352,136 +309,104 @@ function rollDice() {
             //Show player 2 or computure dice won on a turn
             let changeTwo = document.getElementById('player2Score' + roundValue);
             changeTwo.classList.add("winner");
-        };
-
+        }
         //Reset score for round
         player1Score = 0;
         player2Score = 0;
         roundValue += 1;
     }
 }
-
 //Update history
 function history() {
     let newHistory = document.createElement('div');
-    newHistory.innerHTML = '<div class="row histroyRow" id="histroyRow"><!--Round counter--><div class="col-2 diceHistory roundCounter"><h4>' + roundValue + ':</h4></div><!--Player 1 score and used dice--><div class="col-4 diceHistory id="player1History"><button class="dice" id="d' + player1Dice + '"value="' + player1Dice + '"><img src="static/dice_img/d-' + player1Dice + '.jpg"/></button><div id="player1Score' + roundValue + '"> ' + player1Score + '</div></div><!--Player 2 score and used dice--><div class="col-4 diceHistory id="player2History"><button class="dice" id="d' + player2Dice + ' value="' + player2Dice + '><img src="static/dice_img/d-' + player2Dice + '.jpg"/></button><div id="player2Score' + roundValue + '"> ' + player2Score + '</div></div></div><br>'
+    newHistory.innerHTML = '<div class="row histroyRow" id="histroyRow"><!--Round counter--><div class="col-2 diceHistory roundCounter"><h4>' + roundValue + ':</h4></div><!--Player 1 score and used dice--><div class="col-4 diceHistory id="player1History"><button class="dice" id="d' + player1Dice + '"value="' + player1Dice + '"><img src="static/dice_img/d-' + player1Dice + '.jpg"/></button><div id="player1Score' + roundValue + '"> ' + player1Score + '</div></div><!--Player 2 score and used dice--><div class="col-4 diceHistory id="player2History"><button class="dice" id="d' + player2Dice + ' value="' + player2Dice + '><img src="static/dice_img/d-' + player2Dice + '.jpg"/></button><div id="player2Score' + roundValue + '"> ' + player2Score + '</div></div></div><br>';
     document.getElementById("history").appendChild(newHistory);
-};
+}
 
 function changePlayer() {
     //Change active player
     player1Area.classList.toggle("activePlayer");
     player2Area.classList.toggle("activePlayer");
-
     //Change dice area
     showDice1.classList.toggle("diceRowValue");
     showDice2.classList.toggle("diceRowValue");
-
     //Change active Roll btn
     activeRollBtn1.classList.toggle("active");
     activeRollBtn2.classList.toggle("active");
-
     //Change Roll Result
     rollResult1.classList.toggle("rollResult");
     rollResult2.classList.toggle("rollResult");
-
     if (player1Area.classList.contains("activePlayer")) {
         activeDice = document.getElementById('shownDice1');
     }
     if (player2Area.classList.contains("activePlayer")) {
         activeDice = document.getElementById('shownDice2');
     }
-};
-
-
+}
 
 function percentage() {
     for (var i = diceOptions.length - 1; i >= 0; --i) {
-
         let abc = diceOptions[i] - score;
         let qwe = 100 / diceOptions[i];
         let fred = abc * qwe;
         let code = fred.toFixed(0);
+        if (code < 0) {
+            code = 0;
+        }
+        let set = $(display + diceOptions[i])[0].setAttribute("percentage", code);
 
         for (var j = diceOptions.length - 1; j >= 0; --j) {
             switch (true) {
                 case code >= 90:
-                    console.log(diceOptions[i] + " a " + code);
                     $(display + diceOptions[i]).addClass('great');
-                    $(display + diceOptions[i])[0].setAttribute("percentage", code);
+                    set;
                     break;
                 case code >= 70 && code <= 89:
-                    console.log(diceOptions[i] + " b");
                     $(display + diceOptions[i]).addClass('good');
-                    $(display + diceOptions[i])[0].setAttribute("percentage", code);
+                    set;
                     break;
                 case code >= 50 && code <= 69:
-                    console.log(diceOptions[i] + " c");
                     $(display + diceOptions[i]).addClass('ok');
-                    $(display + diceOptions[i])[0].setAttribute("percentage", code);
+                    set;
                     break;
-                case code <= 50:
-                    console.log(diceOptions[i] + " d");
+                case code < 50 && code > 10:
                     $(display + diceOptions[i]).addClass('bad');
-                    $(display + diceOptions[i])[0].setAttribute("percentage", code);
+                    set;
                     break;
                 default:
-                    code = 0;
-                    console.log(diceOptions[i] + " e");
                     $(display + diceOptions[i]).addClass('worst');
+                    set;
+                    break;
+
             }
-            $(display + diceOptions[i])[0].setAttribute("percentage", code);
+
         }
     }
-
 }
 
+//Remove percentage classes after both players have gone
 function removePercentage() {
     for (var i = diceOptions.length - 1; i >= 0; --i) {
-        $(display + diceOptions[i]).removeClass('great')
-        $(display + diceOptions[i]).removeClass('good')
-        $(display + diceOptions[i]).removeClass('ok')
-        $(display + diceOptions[i]).removeClass('bad')
+        $(display + diceOptions[i]).removeClass('great');
+        $(display + diceOptions[i]).removeClass('good');
+        $(display + diceOptions[i]).removeClass('ok');
+        $(display + diceOptions[i]).removeClass('bad');
         $(display + diceOptions[i]).removeClass('worst');
     }
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+};
 
 //Javscript control of functions
 document.getElementById("start-btn").addEventListener("click", function() {
-
     //reset score and history
     reset();
-
     //Get player player and change to their name in HTML
     getPlayerData();
-
     //computer as player 2
-
 
     //random player start
     randomStarter();
-
     //close modal
     closeModal();
-
-    //helper percentage colours
-    //percentage();
-
     //game play
     gamePlay();
 

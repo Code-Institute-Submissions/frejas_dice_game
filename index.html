@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link type="text/css" rel="stylesheet" href="static\style.css">
+    <link type="text/css" rel="stylesheet" href="static/style.css">
 
     <title>Freja's Dice Game</title>
 </head>
@@ -47,11 +47,11 @@
                             <!--Choice of player v player or aginst the computer-->
                             <div class="row">
                                 <button type="button" class="btn btn-primary" id="playerVplayer" value="1">
-                                    <h5> Player V Player</h3>
+                                    Player V Player
                                 </button>
 
                                 <button type="button" class="btn btn-primary" id="playerVcomputer">
-                                        <h5> Player V Computer</h3>
+                                        Player V Computer
                                     </button>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                                     <input type="checkbox" class="custom-control-input" id="helpSwitchPlayer2" checked>
                                     <label class="custom-control-label" for="customSwitch1">Help Tool</label>
                                 </div>
-
+                            </form>
                         </div>
 
                     </div>
@@ -137,12 +137,12 @@
                         </div>
                         <!--Player 1 score and used dice-->
                         <div class="col-4 diceHistory" id="player1History">
-                            <button class="dice" id="d8" value="8"><img src="static\dice_img\d-8.jpg"/></button>
+                            <button class="dice" id="d8" value="8"><img src="static/dice_img/d-8.jpg" alt="Player 1 dice history"/></button>
                             <br>6
                         </div>
                         <!--Player 2 score and used dice-->
                         <div class="col-4 diceHistory" id="player2History">
-                            <button class="dice" id="d20" value="20"><img src="static\dice_img\d-20.jpg"/></button>
+                            <button class="dice" id="d20" value="20"><img src="static/dice_img/d-20.jpg" alt="Player 2 dice history"/></button>
                             <br>9
                         </div>
                     </div>
@@ -158,18 +158,18 @@
                 <div class="player1PlayArea disabled activePlayer" id="player1PlayArea">
                     <br>
                     <div class="container">
-                        <h4 class="player1Name">Player 1</h3>
+                        <h4 class="player1Name">Player 1</h4>
                     </div>
                     <br>
 
                     <!--Dice board for player-1-->
                     <div class="container">
                         <div class="player1Dice row">
-                            <button class="dice" type="button" id="player1-d4" value="4"><img src="static\dice_img\d-4.jpg"/></button>
-                            <button class="dice" type="button" id="player1-d6" value="6"><img src="static\dice_img\d-6.jpg"/></button>
-                            <button class="dice" type="button" id="player1-d8" value="8"><img src="static\dice_img\d-8.jpg"/></button>
-                            <button class="dice" type="button" id="player1-d12" value="12"><img src="static\dice_img\d-12.jpg"/></button>
-                            <button class="dice" type="button" id="player1-d20" value="20"><img src="static\dice_img\d-20.jpg"/></button>
+                            <button class="dice" type="button" id="player1-d4" value="4"><img src="static/dice_img/d-4.jpg" alt="Player 1 dice of a d4"/></button>
+                            <button class="dice" type="button" id="player1-d6" value="6"><img src="static/dice_img/d-6.jpg" alt="Player 1 dice of a d6"/></button>
+                            <button class="dice" type="button" id="player1-d8" value="8"><img src="static/dice_img/d-8.jpg" alt="Player 1 dice of a d8"/></button>
+                            <button class="dice" type="button" id="player1-d12" value="12"><img src="static/dice_img/d-12.jpg" alt="Player 1 dice of a d12"/></button>
+                            <button class="dice" type="button" id="player1-d20" value="20"><img src="static/dice_img/d-20.jpg" alt="Player 1 dice of a d20"/></button>
                         </div>
                     </div>
 
@@ -177,7 +177,7 @@
                     <!--Player-1 choosen dice and roll button for value-->
                     <div class="player1Values diceRowValue row" id="showPlayer1Dice">
                         <div class="dice-value">
-                            <img src="" id="shownDice1" class="dice" /></div>
+                            <img src="" id="shownDice1" class="shownDice" alt="Player 1 of choosen dice" /></div>
                         <button class="roll active" type="button" id="player1Btn">Roll</button>
                     </div>
                     <br>
@@ -185,8 +185,6 @@
                     <div class="player1Info rollResult row" id="player1Info">
                         <h3>Good Luck!</h3>
                     </div>
-
-
                 </div>
 
                 <br>
@@ -196,23 +194,23 @@
                 <div class="player2PlayArea disabled activePlayer" id="player2PlayArea">
                     <br>
                     <div class="container">
-                        <h4 class="player2Name">Player 2</h3>
+                        <h4 class="player2Name">Player 2</h4>
                     </div>
                     <br>
                     <!--Dice board for player-2-->
                     <div class="container">
                         <div class="player2Dice row" id="player2Dice">
-                            <button class="dice" type="button" id="player2-d4" value="4"><img src="static\dice_img\d-4.jpg"/></button>
-                            <button class="dice" type="button" id="player2-d6" value="6"><img src="static\dice_img\d-6.jpg"/></button>
-                            <button class="dice" type="button" id="player2-d8" value="8"><img src="static\dice_img\d-8.jpg"/></button>
-                            <button class="dice" type="button" id="player2-d12" value="12"><img src="static\dice_img\d-12.jpg"/></button>
-                            <button class="dice" type="button" id="player2-d20" value="20"><img src="static\dice_img\d-20.jpg"/></button>
+                            <button class="dice" type="button" id="player2-d4" value="4"><img src="static/dice_img/d-4.jpg" alt="Player 2 dice of a d4"/></button>
+                            <button class="dice" type="button" id="player2-d6" value="6"><img src="static/dice_img/d-6.jpg" alt="Player 2 dice of a d6"/></button>
+                            <button class="dice" type="button" id="player2-d8" value="8"><img src="static/dice_img/d-8.jpg" alt="Player 2 dice of a d8"/></button>
+                            <button class="dice" type="button" id="player2-d12" value="12"><img src="static/dice_img/d-12.jpg" alt="Player 2 dice of a d12"/></button>
+                            <button class="dice" type="button" id="player2-d20" value="20"><img src="static/dice_img/d-20.jpg" alt="Player 2 dice of a d20"/></button>
                         </div>
                     </div>
                     <br>
                     <!--Player-2 choosen dice and roll button for value-->
                     <div class="player2Values diceRowValue row" id="showPlayer2Dice">
-                        <div class="dice-value"><img src="" id="shownDice2" class="dice" /></div>
+                        <div class="dice-value"><img src="" id="shownDice2" class="shownDice" alt="Player 2 dice of choosen dice" /></div>
                         <button class="roll active" type="button" id="player2Btn">Roll</button>
                     </div>
                     <br>
@@ -230,7 +228,7 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
-    <script src="static\js\app-ordinal.js"></script>
+    <script src="static/js/app-ordinal.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>

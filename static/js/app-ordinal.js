@@ -30,7 +30,7 @@ Order:
 //Clear history and set score on new Game
 function reset() {
     //clear Histroy
-    let clearHistory = (elms) => elms.forEach(el => el.remove());
+    const clearHistory = (elms) => elms.forEach(el => el.remove());
     clearHistory(document.querySelectorAll("#histroyRow"));
 
     //add default line for history
@@ -85,7 +85,7 @@ function getPlayerData() {
 }
 
 //Game Play
-let dice, activeDice, player1Total, player2Total, roundValue, player1Score, player2Score, randomPlayer, showDice1, rollResult1, rollResult2, showDice2, diceValue, randomStartDice1, randomStartDice2, startDice1, startDice2, activeRollBtn1, activeRollBtn2;
+let dice, player1Help, player2Help, activeDice, player1Total, player2Total, roundValue, player1Score, player2Score, randomPlayer, showDice1, rollResult1, rollResult2, showDice2, diceValue, randomStartDice1, randomStartDice2, startDice1, startDice2, activeRollBtn1, activeRollBtn2;
 
 //avaible dice to use in array
 let diceOptionsPlayer1 = [4, 6, 8, 12, 20];
@@ -117,8 +117,8 @@ showDice2 = document.getElementById("showPlayer2Dice");
 rollResult1 = document.getElementById("player1Info");
 rollResult2 = document.getElementById("player2Info");
 
-let player1Help = document.getElementById("helpSwitchPlayer2");
-let player2Help = document.getElementById("helpSwitchPlayer1");
+player1Help = document.getElementById("helpSwitchPlayer2");
+player2Help = document.getElementById("helpSwitchPlayer1");
 
 //deactive player 2 div
 function setUpPlayer1() {
@@ -336,6 +336,7 @@ function changePlayer() {
     //Change Roll Result
     rollResult1.classList.toggle("rollResult");
     rollResult2.classList.toggle("rollResult");
+    //active dice to right player
     if (player1Area.classList.contains("activePlayer")) {
         activeDice = document.getElementById('shownDice1');
     }
@@ -344,35 +345,43 @@ function changePlayer() {
     }
 }
 
+//Function to add classNames to diceRow to show percentage to win
 function percentage() {
     for (var i = diceOptions.length - 1; i >= 0; --i) {
-        let abc = diceOptions[i] - score;
-        let qwe = 100 / diceOptions[i];
-        let fred = abc * qwe;
-        let code = fred.toFixed(0);
+        //Working out percentage to win
+        let per = (diceOptions[i] - score) * (100 / diceOptions[i]);
+        let code = per.toFixed(0);
+        //Stop percentage under 0
         if (code < 0) {
             code = 0;
         }
+        //Reusable code to set percentage
         let set = $(display + diceOptions[i])[0].setAttribute("percentage", code);
 
         for (var j = diceOptions.length - 1; j >= 0; --j) {
             switch (true) {
+                //great className with colour green
                 case code >= 90:
                     $(display + diceOptions[i]).addClass('great');
                     set;
                     break;
+                    //good className with colour light green
                 case code >= 70 && code <= 89:
                     $(display + diceOptions[i]).addClass('good');
                     set;
                     break;
+                    //ok className with colour yellow
                 case code >= 50 && code <= 69:
                     $(display + diceOptions[i]).addClass('ok');
                     set;
                     break;
+
+                    //bad className with colour light pink
                 case code < 50 && code > 10:
                     $(display + diceOptions[i]).addClass('bad');
                     set;
                     break;
+                    //worst className with colour dark grey
                 default:
                     $(display + diceOptions[i]).addClass('worst');
                     set;

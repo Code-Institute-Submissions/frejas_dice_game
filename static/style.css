@@ -129,7 +129,6 @@ col {
 
 .historyRow {
     width: 100%;
-    margin: 0 !important;
     height: 100px;
 }
 
@@ -191,4 +190,36 @@ select {
 
 .disabled.activePlayer {
     pointer-events: all !important;
+}
+
+
+/* Percentage css code*/
+
+.great,
+.good,
+.ok,
+.bad,
+.worst {
+    border-radius: 10px;
+    border: solid 3px;
+}
+
+.great {
+    border-color: rgb(83, 224, 64);
+}
+
+.good {
+    border-color: lightgreen;
+}
+
+.ok {
+    border-color: yellow;
+}
+
+.bad {
+    border-color: lightpink;
+}
+
+.worst {
+    border-color: red;
 }

@@ -53,7 +53,7 @@ function reset() {
 let player1, player2, player1Name, player2Name, player1Area, player2Area;
 
 //Modal open on page ready
-$(window).on('load', function() {
+$(window).on('load', () => {
     $("#introModal").modal('show');
 });
 
@@ -159,6 +159,7 @@ function gamePlay() {
         diceValue = $(this).val();
         //show new dice
         activeDice.src = "static/dice_img/d-" + diceValue + ".jpg";
+
 
         //roll the dice if clicked
         rollDice();

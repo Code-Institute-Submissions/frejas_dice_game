@@ -149,7 +149,7 @@ function setUpPlayer2() {
 
 //Game function
 function gamePlay() {
-    diceValue = 0;
+
     //get new dice on starting area
     newdice();
 
@@ -202,12 +202,14 @@ function showPercentage() {
         score = player2Score;
         display = '#player1-d';
         percentage();
+        computerSecondMove();
     }
     if (player2Help.checked && player1Score > 0) {
         diceOptions = diceOptionsPlayer2;
         score = player1Score;
         display = '#player2-d';
         percentage();
+        computerSecondMove();
     }
 }
 
@@ -240,7 +242,7 @@ function rollDice() {
     dice = Math.floor(Math.random() * diceValue + 1);
     //error protection on player not selecting a dice
     if (diceValue > 0) {
-        $(".rollResult").html("You rolled a value of " + dice);
+        $(".rollResult").html("<h3>You rolled a value of " + dice + "</h3>");
     }
     //Set score to player
     if (player1Area.classList.contains("activePlayer")) {
@@ -302,23 +304,28 @@ function rollDice() {
             history();
             let changeOne = document.getElementById('player1Score' + roundValue);
             changeOne.classList.add("winner");
-        } else {
+        } else if (player1Score < player2Score) {
             player2Total += 1;
             document.getElementById('player2Score').innerText = player2Total;
             history();
             //Show player 2 or computure dice won on a turn
             let changeTwo = document.getElementById('player2Score' + roundValue);
             changeTwo.classList.add("winner");
+        } else {
+            roundValue -= 1;
         }
+
         //Reset score for round
         player1Score = 0;
         player2Score = 0;
         roundValue += 1;
     }
 }
+
 //Update history
 function history() {
     let newHistory = document.createElement('div');
+    newHistory.classList.add("histroy");
     newHistory.innerHTML = '<div class="row histroyRow" id="histroyRow"><!--Round counter--><div class="col-2 diceHistory roundCounter"><h4>' + roundValue + ':</h4></div><!--Player 1 score and used dice--><div class="col-4 diceHistory id="player1History"><button class="dice" id="d' + player1Dice + '"value="' + player1Dice + '"><img src="static/dice_img/d-' + player1Dice + '.jpg"/></button><div id="player1Score' + roundValue + '"> ' + player1Score + '</div></div><!--Player 2 score and used dice--><div class="col-4 diceHistory id="player2History"><button class="dice" id="d' + player2Dice + ' value="' + player2Dice + '><img src="static/dice_img/d-' + player2Dice + '.jpg"/></button><div id="player2Score' + roundValue + '"> ' + player2Score + '</div></div></div><br>';
     document.getElementById("history").appendChild(newHistory);
 }
@@ -344,6 +351,9 @@ function changePlayer() {
         activeDice = document.getElementById('shownDice2');
     }
 }
+
+
+
 
 //Function to add classNames to diceRow to show percentage to win
 function percentage() {
@@ -401,8 +411,52 @@ function removePercentage() {
         $(display + diceOptions[i]).removeClass('ok');
         $(display + diceOptions[i]).removeClass('bad');
         $(display + diceOptions[i]).removeClass('worst');
+        //remove computer selection
+        $(display + diceOptions[i]).removeClass('computer');
     }
 };
+
+
+function computerSecondMove() {
+    for (var i = 0; i < diceOptionsPlayer2.length; ++i) {
+
+        //Working out percentage to win
+        let per = (diceOptions[i] - score) * (100 / diceOptions[i]);
+        let code = per.toFixed(0);
+        //Stop percentage under 0
+        if (code < 0) {
+            code = 0;
+        }
+
+        let set = $(display + diceOptionsPlayer2[i])[0].setAttribute("percentage", code);
+
+        for (var z = 0; z < diceOptionsPlayer2.length; ++z) {
+            switch (true) {
+                case code >= 40:
+                    return $(display + diceOptionsPlayer2[i]).addClass('computer');
+                    set;
+                    break;
+                case code = 0:
+                    return $(display + diceOptionsPlayer2[i]).addClass('computer');
+                    set;
+                default:
+
+
+            }
+        }
+    }
+}
+
+function computerFirstMove() {
+    const randomComputerMove = diceOptionsPlayer2[Math.floor(Math.random() * diceOptionsPlayer2.length)];
+
+}
+
+
+
+
+
+
 
 //Javscript control of functions
 document.getElementById("start-btn").addEventListener("click", function() {
@@ -412,6 +466,7 @@ document.getElementById("start-btn").addEventListener("click", function() {
     getPlayerData();
     //computer as player 2
 
+    computerFirstMove();
     //random player start
     randomStarter();
     //close modal

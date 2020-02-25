@@ -26,7 +26,6 @@ Order:
 -Overall control of javascript functions
 */
 
-
 //Clear history and set score on new Game
 function reset() {
     //clear Histroy
@@ -85,12 +84,14 @@ function getPlayerData() {
 }
 
 //Game Play
-let dice, player1Help, player2Help, activeDice, player1Total, player2Total, roundValue, player1Score, player2Score, randomPlayer, showDice1, rollResult1, rollResult2, showDice2, diceValue, randomStartDice1, randomStartDice2, startDice1, startDice2, activeRollBtn1, activeRollBtn2;
+
+let dice, player1Help, player2Help, activeDice, player1Total, player2Total, roundValue, player1Score, player2Score;
+let randomPlayer, showDice1, rollResult1, rollResult2, showDice2, diceValue, randomStartDice1, randomStartDice2;
+let startDice1, startDice2, activeRollBtn1, activeRollBtn2;
 
 //avaible dice to use in array
 let diceOptionsPlayer1 = [4, 6, 8, 12, 20];
 let diceOptionsPlayer2 = [4, 6, 8, 12, 20];
-
 //Function for which player goes first
 function randomStarter() {
     randomPlayer = Math.floor(Math.random() * 2 + 1);
@@ -130,7 +131,6 @@ function setUpPlayer1() {
     activeRollBtn2.classList.toggle("active");
     //active roll result
     rollResult2.classList.toggle("rollResult");
-
     activeDice = document.getElementById('shownDice1');
 }
 
@@ -143,7 +143,6 @@ function setUpPlayer2() {
     activeRollBtn1.classList.toggle("active");
     //active roll result
     rollResult1.classList.toggle("rollResult");
-
     activeDice = document.getElementById('shownDice2');
 }
 
@@ -160,7 +159,6 @@ function gamePlay() {
         //show new dice
         activeDice.src = "static/dice_img/d-" + diceValue + ".jpg";
 
-
         //roll the dice if clicked
         rollDice();
         showPercentage();
@@ -176,13 +174,13 @@ function gamePlay() {
         if (player1Help.checked && player2Score > 0) {
             showPercentage();
             if (diceValue != 0) {
-                $(".rollResult").html("D" + diceValue + " has a " + $(this).attr("percentage") + "% chance to win!");
+                $(".rollResult").html("<h5>D" + diceValue + " has a " + $(this).attr("percentage") + "% chance to win!</h5>");
             }
         }
         if (player2Help.checked && player1Score > 0) {
             showPercentage();
             if (diceValue != 0) {
-                $(".rollResult").html("D" + diceValue + " has a " + $(this).attr("percentage") + "% chance to win!");
+                $(".rollResult").html("<h5>D" + diceValue + " has a " + $(this).attr("percentage") + "% chance to win!</h5>");
             }
         }
     });
@@ -203,35 +201,38 @@ function showPercentage() {
         score = player2Score;
         display = '#player1-d';
         percentage();
-        computerSecondMove();
     }
     if (player2Help.checked && player1Score > 0) {
         diceOptions = diceOptionsPlayer2;
         score = player1Score;
         display = '#player2-d';
         percentage();
-        computerSecondMove();
     }
 }
 
 //start with random dice (thats not been used) on start
+
 function newdice() {
     //Player 1 new dice on start of turn
     randomStartDice1 = diceOptionsPlayer1[Math.floor(Math.random() * diceOptionsPlayer1.length)];
+
     //If the array is empty, 'if' statement to stop blank img
     if (diceOptionsPlayer1.length > 0) {
         startDice1.src = "static/dice_img/d-" + randomStartDice1 + ".jpg";
     }
+
     //set dice value from random starting dice
     startDice1.setAttribute("value", randomStartDice1);
     diceValue = randomStartDice1;
 
     //Player 2/computer new dice on start of turn
     randomStartDice2 = diceOptionsPlayer2[Math.floor(Math.random() * diceOptionsPlayer2.length)];
+
     //If the array is empty, if statement to stop blank img
     if (diceOptionsPlayer2.length > 0) {
         startDice2.src = "static/dice_img/d-" + randomStartDice2 + ".jpg";
     }
+
     //set dice value from random starting dice
     startDice2.setAttribute("value", randomStartDice2);
     diceValue = randomStartDice2;
@@ -243,7 +244,7 @@ function rollDice() {
     dice = Math.floor(Math.random() * diceValue + 1);
     //error protection on player not selecting a dice
     if (diceValue > 0) {
-        $(".rollResult").html("<h3>You rolled a value of " + dice + "</h3>");
+        $(".rollResult").html("<h4>You rolled a value of " + dice + "</h4>");
     }
     //Set score to player
     if (player1Area.classList.contains("activePlayer")) {
@@ -314,6 +315,7 @@ function rollDice() {
             changeTwo.classList.add("winner");
         } else {
             roundValue -= 1;
+            history();
         }
 
         //Reset score for round
@@ -347,9 +349,11 @@ function changePlayer() {
     //active dice to right player
     if (player1Area.classList.contains("activePlayer")) {
         activeDice = document.getElementById('shownDice1');
+
     }
     if (player2Area.classList.contains("activePlayer")) {
         activeDice = document.getElementById('shownDice2');
+
     }
 }
 
@@ -358,10 +362,12 @@ function changePlayer() {
 
 //Function to add classNames to diceRow to show percentage to win
 function percentage() {
+
     for (var i = diceOptions.length - 1; i >= 0; --i) {
         //Working out percentage to win
-        let per = (diceOptions[i] - score) * (100 / diceOptions[i]);
-        let code = per.toFixed(0);
+
+        let qwe = (diceOptions[i] - score) * (100 / diceOptions[i]);
+        let code = qwe.toFixed(0);
         //Stop percentage under 0
         if (code < 0) {
             code = 0;
@@ -375,27 +381,32 @@ function percentage() {
                 case code >= 90:
                     $(display + diceOptions[i]).addClass('great');
                     set;
+                    console.log(code);
                     break;
                     //good className with colour light green
                 case code >= 70 && code <= 89:
                     $(display + diceOptions[i]).addClass('good');
                     set;
+                    console.log(code);
                     break;
                     //ok className with colour yellow
                 case code >= 50 && code <= 69:
                     $(display + diceOptions[i]).addClass('ok');
                     set;
+                    console.log(code);
                     break;
 
                     //bad className with colour light pink
                 case code < 50 && code > 10:
                     $(display + diceOptions[i]).addClass('bad');
                     set;
+                    console.log(code);
                     break;
                     //worst className with colour dark grey
                 default:
                     $(display + diceOptions[i]).addClass('worst');
                     set;
+                    console.log(code);
                     break;
 
             }
@@ -417,7 +428,7 @@ function removePercentage() {
     }
 };
 
-
+/*
 function computerSecondMove() {
     for (var i = 0; i < diceOptionsPlayer2.length; ++i) {
 
@@ -453,7 +464,7 @@ function computerFirstMove() {
 
 }
 
-
+*/
 
 
 
@@ -467,7 +478,9 @@ document.getElementById("start-btn").addEventListener("click", function() {
     getPlayerData();
     //computer as player 2
 
-    computerFirstMove();
+    // computerFirstMove();
+
+
     //random player start
     randomStarter();
     //close modal

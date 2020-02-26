@@ -428,6 +428,12 @@ function removePercentage() {
     }
 };
 
+//Function for help percentages
+
+
+
+
+
 /*
 function computerSecondMove() {
     for (var i = 0; i < diceOptionsPlayer2.length; ++i) {

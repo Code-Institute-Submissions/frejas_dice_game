@@ -1,4 +1,4 @@
-##Welcome to Freja's Dice Game##
+<h3>Welcome to Freja's Dice Game</h3>
 
 This project was made for the a project for Code Institue Interactive Frontend Development Milestone Project.
 The aim was to make a fun game in Javascript and completing the recommanded task.

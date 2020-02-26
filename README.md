@@ -1,4 +1,4 @@
-<h3>Welcome to Freja's Dice Game</h3>
+<h2>Welcome to Freja's Dice Game</h2>
 
 This project was made for the a project for Code Institue Interactive Frontend Development Milestone Project.
 The aim was to make a fun game in Javascript and completing the recommanded task.
@@ -9,9 +9,9 @@ When I first played the game, I noticed that the child who taught me, had troubl
 
 
 
-###UX###
+<h3>UX</h3>
 This project while aimed at completing a milestone project, it is made for family's so as such I wanted I friendly atmosphere!
 
-#####As a Player#####
+<h5>As a Player</h5>
 *I wanted a fun game for the family or to play against the computer.
 *Understand 

@@ -45,6 +45,15 @@ function reset() {
     player1Total = 0;
     player2Total = 0;
     roundValue = 1;
+
+    diceOptionsPlayer1 = [4, 6, 8, 12, 20];
+    diceOptionsPlayer2 = [4, 6, 8, 12, 20];
+
+    for (var i = diceOptionsPlayer1.length - 1; i >= 0; --i) {
+        $('#player1-d' + diceOptionsPlayer1[i]).removeClass('disabled');
+        $('#player2-d' + diceOptionsPlayer1[i]).removeClass('disabled');
+    }
+
 }
 
 //Start Mondal and get player info
@@ -54,6 +63,7 @@ let player1, player2, player1Name, player2Name, player1Area, player2Area;
 //Modal open on page ready
 $(window).on('load', () => {
     $("#introModal").modal('show');
+
 });
 
 //close modal
@@ -88,10 +98,8 @@ function getPlayerData() {
 let dice, player1Help, player2Help, activeDice, player1Total, player2Total, roundValue, player1Score, player2Score;
 let randomPlayer, showDice1, rollResult1, rollResult2, showDice2, diceValue, randomStartDice1, randomStartDice2;
 let startDice1, startDice2, activeRollBtn1, activeRollBtn2;
+let diceOptionsPlayer1, diceOptionsPlayer2;
 
-//avaible dice to use in array
-let diceOptionsPlayer1 = [4, 6, 8, 12, 20];
-let diceOptionsPlayer2 = [4, 6, 8, 12, 20];
 //Function for which player goes first
 function randomStarter() {
     randomPlayer = Math.floor(Math.random() * 2 + 1);
@@ -118,8 +126,8 @@ showDice2 = document.getElementById("showPlayer2Dice");
 rollResult1 = document.getElementById("player1Info");
 rollResult2 = document.getElementById("player2Info");
 
-player1Help = document.getElementById("helpSwitchPlayer2");
-player2Help = document.getElementById("helpSwitchPlayer1");
+player1Help = document.getElementById("helpSwitchPlayer1");
+player2Help = document.getElementById("helpSwitchPlayer2");
 
 //deactive player 2 div
 function setUpPlayer1() {
@@ -148,7 +156,6 @@ function setUpPlayer2() {
 
 //Game function
 function gamePlay() {
-
     //get new dice on starting area
     newdice();
 
@@ -207,6 +214,22 @@ function showPercentage() {
         score = player1Score;
         display = '#player2-d';
         percentage();
+    }
+    if (player1Score == 0 && player2Score > 0) {
+        diceOptions = diceOptionsPlayer1;
+        score = player2Score;
+        display = '#player1-d';
+
+    }
+    if (player2Score == 0 && player1Score > 0) {
+        diceOptions = diceOptionsPlayer2;
+        score = player1Score;
+        display = '#player2-d';
+
+    }
+    //Check if all dice have been player: start end function
+    if ((diceOptionsPlayer1.length == 0) && (diceOptionsPlayer2.length == 0)) {
+        endGame()
     }
 }
 
@@ -314,7 +337,7 @@ function rollDice() {
             let changeTwo = document.getElementById('player2Score' + roundValue);
             changeTwo.classList.add("winner");
         } else {
-            roundValue -= 1;
+
             history();
         }
 
@@ -372,6 +395,9 @@ function percentage() {
         if (code < 0) {
             code = 0;
         }
+        if (code == unidentified || NaN) {
+
+        }
         //Reusable code to set percentage
         let set = $(display + diceOptions[i])[0].setAttribute("percentage", code);
 
@@ -428,9 +454,6 @@ function removePercentage() {
     }
 };
 
-//Function for help percentages
-
-
 
 
 
@@ -471,6 +494,10 @@ function computerFirstMove() {
 }
 
 */
+function endGame() {
+    $("#endModal").modal('show');
+}
+
 
 
 
@@ -495,6 +522,6 @@ document.getElementById("start-btn").addEventListener("click", function() {
     gamePlay();
 
     //end of game
-    //finishedGame();
+
 
 });

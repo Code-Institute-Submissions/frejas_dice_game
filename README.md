@@ -93,6 +93,7 @@ As this is for a 'Milestone Project' I wanted to show case a variaty of new skil
 
 -background:
 
-#### Meida ####
+#### Acknowledgements ####
 - To freja! Who taught me the game!
+- Jonas Schmedtmann and his course on udemy.
 

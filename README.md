@@ -69,17 +69,19 @@ As this is for a 'Milestone Project' I wanted to show case a variaty of new skil
 - Change the diffulty of the computer.
     -Enable an easy, medium or hard mode by changing the computers probabily choice.
 
--Add more dice.
+- Add more dice.
     -Adding more options for the dice.
-
-    
-
+   
 <h2>Technologies Used</h2>     
--HTML and css: Building the base of the visual game and changing style of indivual site taste.
+-  HTML and css: Building the base of the visual game and changing style of indivual site taste.
 
--Javascript and Jquery: Applying functions and DOM manipulation.
+- Bootstrap: Allowing ease use of row and columes to allow the game to feel more structured.
 
--Github: Saving and deploying the site 
+- Javascript and Jquery: Applying functions and DOM manipulation.
+
+- Github: Saving and deploying the site .
+
+- Visual Studio: To write the program
 
 <h2>Deployment</h2>
 -add something about github

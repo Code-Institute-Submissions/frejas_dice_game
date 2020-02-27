@@ -42,20 +42,7 @@
                             <p>Although the second player can choose a different die and you can only use the die once per game!</p>
                             <p>Choose the your dice carefully!</p>
                         </div>
-                        <!--Choice of player v player or aginst the computer
-                        <div class="playerVcomputer">
-                           
-                            <div class="row">
-                                <button type="button" class="btn btn-primary" id="playerVplayer" value="1">
-                                    Player V Player
-                                </button>
 
-                                <button type="button" class="btn btn-primary" id="playerVcomputer" value="0">
-                                        Player V Computer
-                                    </button>
-                            </div>
-                        </div>
-                    -->
                         <div class="playerInformation">
                             <!--Player Info, colour choice and help option-->
                             <form id="userId">
@@ -89,22 +76,44 @@
                 </div>
             </div>
         </div>
+
+
         <!--End round modal-->
-        <div class="modal" tabindex="1" role="dialog" id="endModal">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade" tabindex="1" role="dialog" id="endModal">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Winner!</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                     </div>
-                    <div class="modal-body">
-                        <p>Modal body text goes here.</p>
+                    <div class="row modal-body">
+
+                        <div class="col-6 player1">
+                            <div class="container">
+                                <h4 class="player1Name">Player 1</h4>
+                            </div>
+                            <div class="scoreBox">
+                                <div class="player1Score" id="player1TotalScore">0</div>
+                            </div>
+                        </div>
+
+                        <!--Player-2 score area-->
+                        <div class="col-6 player2">
+                            <div class="container">
+                                <h4 class="player2Name">Player 2</h4>
+                            </div>
+                            <div class="scoreBox">
+                                <div class="player2Score" id="player2TotalScore">0</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <br>
+                    <div class=" endGameText">
+                        <p></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=reset()>Close</button>
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="end-btn" onclick="reset()">Close</button>
                     </div>
                 </div>
             </div>

@@ -250,3 +250,87 @@ select {
 .player1Info {
     height: 15%;
 }
+
+
+/*----------Media--------*/
+
+
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 600px) {
+    body {
+        height: 90%;
+    }
+    .dice,
+    .dice-value,
+    .shownDice {
+        max-height: 50px;
+        max-width: 50px;
+    }
+    .player1PlayArea,
+    .player2PlayArea {
+        width: 95%;
+        height: 45%;
+    }
+    .player2PlayArea {
+        position: relative;
+        bottom: 20px;
+    }
+    .player1Dice,
+    .player2Dice {
+        position: relative;
+        bottom: 20px;
+    }
+    .roll {
+        height: 50px;
+        width: 100%;
+    }
+    .player1Values,
+    .player2Values,
+    .player1Info,
+    .player2Info {
+        position: relative;
+        bottom: 30px;
+    }
+}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    body {
+        height: 90%;
+    }
+    .dice,
+    .dice-value,
+    .shownDice {
+        max-height: 75px;
+        max-width: 75px;
+    }
+    .player1PlayArea,
+    .player2PlayArea {
+        width: 95%;
+        height: 45%;
+    }
+    .player2PlayArea {
+        position: relative;
+        bottom: 20px;
+    }
+    .player1Dice,
+    .player2Dice,
+    .history {
+        position: relative;
+        bottom: 20px;
+    }
+    .roll {
+        height: 75px;
+        width: 75px;
+    }
+    .player1Values,
+    .player2Values,
+    .player1Info,
+    .player2Info {
+        position: relative;
+        bottom: 30px;
+    }
+}

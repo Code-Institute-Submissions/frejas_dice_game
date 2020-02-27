@@ -51,12 +51,11 @@ function reset() {
     diceOptionsPlayer2 = [4, 6, 8, 12, 20];
 
 
-
+    //Remove all classNames from previous game
     for (var i = diceOptionsPlayer1.length - 1; i >= 0; --i) {
         $('#player1-d' + diceOptionsPlayer1[i]).removeClass('disabled great good ok bad worst');
         $('#player2-d' + diceOptionsPlayer1[i]).removeClass('disabled great good ok bad worst');
     }
-
 }
 
 //Start Mondal and get player info
@@ -66,7 +65,6 @@ let player1, player2, player1Name, player2Name, player1Area, player2Area;
 //Modal open on page ready
 $(window).on('load', () => {
     $("#introModal").modal('show');
-
 });
 
 //close modal
@@ -113,7 +111,6 @@ function randomStarter() {
     } else {
         setUpPlayer2();
     }
-    console.log("RANDOM")
 }
 
 //DOM
@@ -137,7 +134,6 @@ player2Help = document.getElementById("helpSwitchPlayer2");
 
 player1ScoreHtml = document.getElementById('player1Score');
 player2ScoreHtml = document.getElementById('player2Score');
-
 
 player1TotalScoreHtml = document.getElementById("player1TotalScore");
 player2TotalScoreHtml = document.getElementById("player2TotalScore");
@@ -182,7 +178,6 @@ function gamePlay() {
         diceValue = $(this).val();
         //show new dice
         activeDice.src = "static/dice_img/d-" + diceValue + ".jpg";
-
         //roll the dice if clicked
         rollDice();
         showPercentage();
@@ -217,8 +212,6 @@ function gamePlay() {
         showPercentage();
         diceValue = 0;
     });
-
-
 }
 
 function showPercentage() {
@@ -245,19 +238,16 @@ function showPercentage() {
         diceOptions = diceOptionsPlayer2;
         score = player1Score;
         display = '#player2-d';
-
     }
 
 
     //Check if all dice have been player: start end function
     if ((diceOptionsPlayer1.length == 0) && (diceOptionsPlayer2.length == 0)) {
         setTimeout(function() { endGame(); }, 1000);
-
     }
 }
 
 //start with random dice (thats not been used) on start
-
 function newdice() {
     //Player 1 new dice on start of turn
     randomStartDice1 = diceOptionsPlayer1[Math.floor(Math.random() * diceOptionsPlayer1.length)];
@@ -270,8 +260,6 @@ function newdice() {
         diceValue = randomStartDice1;
     }
 
-
-
     //Player 2/computer new dice on start of turn
     randomStartDice2 = diceOptionsPlayer2[Math.floor(Math.random() * diceOptionsPlayer2.length)];
 
@@ -282,8 +270,6 @@ function newdice() {
         startDice2.setAttribute("value", randomStartDice2);
         diceValue = randomStartDice2;
     }
-
-
 }
 
 //Function to roll the dice on Roll btn or clicked on the dice
@@ -309,7 +295,6 @@ function rollDice() {
         if (diceOptionsPlayer1.length == 0) {
             $('#shownDice1').addClass('disabled');
             $('#player1Btn').addClass('disabled');
-
         }
     } else {
         player2Score = dice;
@@ -319,14 +304,12 @@ function rollDice() {
         for (let b = diceOptionsPlayer2.length - 1; b >= 0; --b) {
             if (diceOptionsPlayer2[b] == diceValue) {
                 diceOptionsPlayer2.splice(b, 1);
-
             }
         }
         //when the array for Player1 is empty, stop btns
         if (diceOptionsPlayer2.length == 0) {
             $('#shownDice2').addClass('disabled');
             $('#player2Btn').addClass('disabled');
-
         }
     }
     //Change Players if one has a score and the other player has not
@@ -362,10 +345,8 @@ function rollDice() {
             let changeTwo = document.getElementById('player2Score' + roundValue);
             changeTwo.classList.add("winner");
         } else {
-
             history();
         }
-
         //Reset score for round
         player1Score = 0;
         player2Score = 0;
@@ -401,12 +382,8 @@ function changePlayer() {
     }
     if (player2Area.classList.contains("activePlayer")) {
         activeDice = document.getElementById('shownDice2');
-
     }
 }
-
-
-
 
 //Function to add classNames to diceRow to show percentage to win
 function percentage() {
@@ -429,32 +406,26 @@ function percentage() {
                 case code >= 90:
                     $(display + diceOptions[i]).addClass('great');
                     set;
-
                     break;
                     //good className with colour light green
                 case code >= 70 && code <= 89:
                     $(display + diceOptions[i]).addClass('good');
                     set;
-
                     break;
                     //ok className with colour yellow
                 case code >= 50 && code <= 69:
                     $(display + diceOptions[i]).addClass('ok');
                     set;
-
                     break;
-
                     //bad className with colour light pink
                 case code < 50 && code > 10:
                     $(display + diceOptions[i]).addClass('bad');
                     set;
-
                     break;
                     //worst className with colour dark grey
                 default:
                     $(display + diceOptions[i]).addClass('worst');
                     set;
-
                     break;
             }
         }
@@ -475,40 +446,32 @@ function endGame() {
     $('#player1Btn').removeClass('disabled');
     $('#player2Btn').removeClass('disabled');
 
-
+    //If player 1 has higher score
     if (player1Total > player2Total) {
         player1TotalScore += 1;
         let compare = player1Total - player2Total;
         winner = "<h3>" + player1 + " wins with " + compare + " points!</h3>";
-
-
+        //If player 2 has higher score
     } else if (player2Total > player1Total) {
         player2TotalScore += 1;
         let compare = player2Total - player1Total;
         winner = "<h3>" + player2 + " wins with " + compare + " points!</h3>";
-
+        //Tired Score
     } else {
         winner = "It's a TIRE";
     }
 
     $(".endGameText").html(winner);
-
+    //Reset comments on players board
     rollResult1.innerHTML = ("<h3> Good Luck! </h3>");
     rollResult2.innerHTML = ("<h3> Have Fun! </h3>");
-
+    //Set total score
     player1TotalScoreHtml.innerText = player1TotalScore;
     player2TotalScoreHtml.innerText = player2TotalScore;
-
-
+    //Reset new game score
     player1Score = 0;
     player2Score = 0;
-
-
-
 }
-
-
-
 
 //Javscript control of functions
 document.getElementById("start-btn").addEventListener("click", function() {
@@ -516,13 +479,10 @@ document.getElementById("start-btn").addEventListener("click", function() {
     reset();
     //Get player player and change to their name in HTML
     getPlayerData();
-
     //random player start
     randomStarter();
     //close modal
     closeModal();
     //game play
     gamePlay();
-
-
 });

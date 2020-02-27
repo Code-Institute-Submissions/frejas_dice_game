@@ -60,20 +60,20 @@ As this is for a 'Milestone Project' I wanted to show case a variaty of new skil
 
 
 
-<h3>Future Implement</h3>
+## Future Implement ##
 - A simple AI to play against
     With the use of 'random' functions, a simple computer player was applied to the project so that the game could be played as a 1 player game.
     
-    -case: While the computers first go, can be completely random. The computers second go against a player needed to be more complex. While using a probality function, the computer could play a dice to actually compete to the players value. But if the computer options were not satisfatory, using of a low value dice would have a stagic gameplay.
+    - case: While the computers first go, can be completely random. The computers second go against a player needed to be more complex. While using a probality function, the computer could play a dice to actually compete to the players value. But if the computer options were not satisfatory, using of a low value dice would have a stagic gameplay.
 
 - Change the diffulty of the computer.
-    -Enable an easy, medium or hard mode by changing the computers probabily choice.
+    - Enable an easy, medium or hard mode by changing the computers probabily choice.
 
 - Add more dice.
-    -Adding more options for the dice.
+    - Adding more options for the dice.
    
-<h2>Technologies Used</h2>     
--  HTML and css: Building the base of the visual game and changing style of indivual site taste.
+## Technologies Used ##    
+- HTML and css: Building the base of the visual game and changing style of indivual site taste.
 
 - Bootstrap: Allowing ease use of row and columes to allow the game to feel more structured.
 
@@ -83,16 +83,16 @@ As this is for a 'Milestone Project' I wanted to show case a variaty of new skil
 
 - Visual Studio: To write the program
 
-<h2>Deployment</h2>
+## Deployment ##
 -add something about github
 
-<h2>Credits</h2>
-<h4>Meida</h4>
+## Credits ## 
+#### Media ####
 
 - dice images : https://www.netclipart.com/isee/mRoJhb_drawn-dice-polyhedral-dice-rpg-dice-png/
 
 -background:
 
-<h4>Meida</h4>
+#### Meida ####
 - To freja! Who taught me the game!
 

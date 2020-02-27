@@ -231,7 +231,7 @@ function showPercentage() {
         diceOptions = diceOptionsPlayer1;
         score = player2Score;
         display = '#player1-d';
-        percentage();
+
 
     }
     if (player2Score == 0 && player1Score > 0) {

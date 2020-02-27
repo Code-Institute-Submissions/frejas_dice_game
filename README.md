@@ -75,13 +75,13 @@ As this is for a 'Milestone Project' I wanted to show case a variaty of new skil
 ## Technologies Used ##    
 - HTML and css: Building the base of the visual game and changing style of indivual site taste.
 
-- https://getbootstrap.com/ and https://bootswatch.com/: Allowing ease use of row and columes to allow the game to feel more structured.
+- [Bootstrap](https://getbootstrap.com/) and [Bootwatch](https://bootswatch.com/): Allowing ease use of row and columes to allow the game to feel more structured.
 
-- Javascript and https://jquery.com/: Applying functions and DOM manipulation.
+- Javascript and [Jquery](https://jquery.com/): Applying functions and DOM manipulation.
 
-- https://github.com/: Saving and deploying the site .
+- [Github](https://github.com/): Saving and deploying the site .
 
-- https://visualstudio.microsoft.com/: To write the program
+- [Visual Studio](https://visualstudio.microsoft.com/): To write the program
 
 ## Deployment ##
 -add something about github

@@ -90,6 +90,14 @@ col {
     background-color: rgba(63, 191, 127, 0.75);
 }
 
+.modal-body {
+    background-image: url(back.jpg);
+}
+
+.custom-control-label {
+    color: white;
+}
+
 .tableArea {
     border-radius: 20px;
     border: black 1px solid;

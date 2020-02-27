@@ -32,6 +32,8 @@ function reset() {
     const clearHistory = (elms) => elms.forEach(el => el.remove());
     clearHistory(document.querySelectorAll("#histroyRow"));
 
+    console.log("clearing");
+
     //add default line for history
     let starterLine = document.createElement('div');
     starterLine.innerHTML = '';
@@ -49,11 +51,12 @@ function reset() {
     diceOptionsPlayer1 = [4, 6, 8, 12, 20];
     diceOptionsPlayer2 = [4, 6, 8, 12, 20];
 
-    for (var i = diceOptionsPlayer1.length - 1; i >= 0; --i) {
-        $('#player1-d' + diceOptionsPlayer1[i]).removeClass('disabled');
-        $('#player2-d' + diceOptionsPlayer1[i]).removeClass('disabled');
-    }
 
+
+    for (var i = diceOptionsPlayer1.length - 1; i >= 0; --i) {
+        $('#player1-d' + diceOptionsPlayer1[i]).removeClass('disabled great good ok bad worst');
+        $('#player2-d' + diceOptionsPlayer1[i]).removeClass('disabled great good ok bad worst');
+    }
 }
 
 //Start Mondal and get player info
@@ -140,6 +143,8 @@ function setUpPlayer1() {
     //active roll result
     rollResult2.classList.toggle("rollResult");
     activeDice = document.getElementById('shownDice1');
+
+    diceOptions = diceOptionsPlayer1;
 }
 
 //deactive player 1 div
@@ -152,6 +157,8 @@ function setUpPlayer2() {
     //active roll result
     rollResult1.classList.toggle("rollResult");
     activeDice = document.getElementById('shownDice2');
+
+    diceOptions = diceOptionsPlayer2;
 }
 
 //Game function
@@ -219,6 +226,7 @@ function showPercentage() {
         diceOptions = diceOptionsPlayer1;
         score = player2Score;
         display = '#player1-d';
+        percentage();
 
     }
     if (player2Score == 0 && player1Score > 0) {
@@ -227,6 +235,7 @@ function showPercentage() {
         display = '#player2-d';
 
     }
+
     //Check if all dice have been player: start end function
     if ((diceOptionsPlayer1.length == 0) && (diceOptionsPlayer2.length == 0)) {
         endGame()
@@ -395,9 +404,6 @@ function percentage() {
         if (code < 0) {
             code = 0;
         }
-        if (code == unidentified || NaN) {
-
-        }
         //Reusable code to set percentage
         let set = $(display + diceOptions[i])[0].setAttribute("percentage", code);
 
@@ -434,66 +440,20 @@ function percentage() {
                     set;
                     console.log(code);
                     break;
-
             }
-
         }
     }
 }
+
+let allPercentageClassNames = ['great', 'good', 'ok', 'bad', 'worst'];
 
 //Remove percentage classes after both players have gone
 function removePercentage() {
     for (var i = diceOptions.length - 1; i >= 0; --i) {
-        $(display + diceOptions[i]).removeClass('great');
-        $(display + diceOptions[i]).removeClass('good');
-        $(display + diceOptions[i]).removeClass('ok');
-        $(display + diceOptions[i]).removeClass('bad');
-        $(display + diceOptions[i]).removeClass('worst');
-        //remove computer selection
-        $(display + diceOptions[i]).removeClass('computer');
-    }
-};
-
-
-
-
-/*
-function computerSecondMove() {
-    for (var i = 0; i < diceOptionsPlayer2.length; ++i) {
-
-        //Working out percentage to win
-        let per = (diceOptions[i] - score) * (100 / diceOptions[i]);
-        let code = per.toFixed(0);
-        //Stop percentage under 0
-        if (code < 0) {
-            code = 0;
-        }
-
-        let set = $(display + diceOptionsPlayer2[i])[0].setAttribute("percentage", code);
-
-        for (var z = 0; z < diceOptionsPlayer2.length; ++z) {
-            switch (true) {
-                case code >= 40:
-                    return $(display + diceOptionsPlayer2[i]).addClass('computer');
-                    set;
-                    break;
-                case code = 0:
-                    return $(display + diceOptionsPlayer2[i]).addClass('computer');
-                    set;
-                default:
-
-
-            }
-        }
+        $(display + diceOptions[i]).removeClass(allPercentageClassNames);
     }
 }
 
-function computerFirstMove() {
-    const randomComputerMove = diceOptionsPlayer2[Math.floor(Math.random() * diceOptionsPlayer2.length)];
-
-}
-
-*/
 function endGame() {
     $("#endModal").modal('show');
 }

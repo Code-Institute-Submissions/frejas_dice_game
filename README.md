@@ -1,4 +1,4 @@
-# Welcome to Freja's Dice Game #
+# [Welcome to Freja's Dice Game](https://brendanoshea84.github.io/frejas_dice_game/) #
 
 This project was made for an assignment for Code Institue Interactive Frontend Development Milestone Project.
 The aim was to make a fun game in Javascript and completing the recommanded tasks.

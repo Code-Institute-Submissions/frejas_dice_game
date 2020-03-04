@@ -118,7 +118,9 @@ Testing follows a player's first interaction with the project and test major sta
         1. Case: As above.
             * Effect: The game would be confusing. While the CSS would help show whose turn it would be, the game play would not be intuitive.
             * Solve: Using a if statement on which players board has the className "activePlayer" and who has the higher score, would then evoke a changePlayer function which would toggle all needed classes.
-            If activePlayer had a higher score, the function is not nessacary and game continues.              
+            If activePlayer had a higher score, the function is not nessacary and game continues.
+
+**[Link back to READ.ME](https://github.com/brendanoshea84/frejas_dice_game/blob/master/README.md)**                          
 
 
 

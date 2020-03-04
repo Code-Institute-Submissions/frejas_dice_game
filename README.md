@@ -9,7 +9,7 @@ This game is aimed at younger children with the intent of the whole family to pl
 
 
 ## UX ##
-This milestone project gave me the opportunity to create a game that is meant for the whole family. The website as such is hence designed to be userfriendly for adults as well as children. Even thou the game itself is fairly straight forward it allows the contestant to challenge themselves and further develop their strategic analysis skills. And of course also beiong a fun game to play with kids all ages!
+This milestone project gave me the opportunity to create a game that is meant for the whole family. The website as such is hence designed to be userfriendly for adults as well as children. Even thou the game itself is fairly straight forward it allows the contestant to challenge themselves and further develop their strategic analysis skills. And of course also being a fun game to play with kids all ages!
 
 ### As a Player ### 
 

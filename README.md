@@ -59,9 +59,6 @@ As this is for a 'Milestone Project' I wanted to show case a variety of new skil
 
     -Demonstrates: By using 'this' values and giving it a variable name. Allows the programmer to pass it through multiply functions to give percentages and scores. While 'this' value can change instantly, the functions will adapt and different results can be observed throughout the game play.
 
-
-
-
 ## Future Implement ##
 - A simple AI to play against
     With the use of 'random' functions, a simple computer player was applied to the project so that the game could be played as a 1 player game.
@@ -81,9 +78,11 @@ As this is for a 'Milestone Project' I wanted to show case a variety of new skil
 
 - Javascript and [Jquery](https://jquery.com/): Applying functions and DOM manipulation.
 
-- [Github](https://github.com/): Saving and deploying the site .
+- [Github](https://github.com/): Saving and deploying the site.
 
-- [Visual Studio](https://visualstudio.microsoft.com/): To write the program
+- [Visual Studio](https://visualstudio.microsoft.com/): To write the program.
+
+- Microsoft photos was used to crop this imagines and background for this project.
 
 ## Testing ## 
  - [TESTING.MD](https://github.com/brendanoshea84/frejas_dice_game/blob/master/testing/TESTING.md) Can be observed here.
@@ -95,14 +94,31 @@ As this is for a 'Milestone Project' I wanted to show case a variety of new skil
  - [Javascrip Validation](https://jshint.com/) from js hint.
 
 ## Deployment ##
--add something about github
+- To deploy your project from GitHub
+    [Deployment Help site](https://www.codecademy.com/articles/f1-u3-github-pages)
+    1. log into your Github page
+    1. Click your project that you wish to deploy.
+    1. Click settings.
+    1. Scroll to GitHub Pages (about half way).
+    1. Under Source click the drop-down menu labelled None and select Master Branch.
+    1. Refresh and your page address should be here and ready!
+
+- To clone your project from Github
+    [Cloning Help Site](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
+    1. Follow the first 2 steps from deployment (As above).
+    1. Under the repository name, click Clone or download. 
+    1. Copy the SSH key and copy the address.
+    1. Go to your favourite code creator (example: Visual Studio).
+    1. Open Git Bash and go to the directory where you wish to clone this site.
+    1. Type `git clone https://github.com/brendanoshea84/frejas_dice_game´ and enter!  
+
 
 ## Credits ## 
 #### Media ####
 
 - dice images : https://www.netclipart.com/isee/mRoJhb_drawn-dice-polyhedral-dice-rpg-dice-png/
 
--background:
+- background: https://www.vectorstock.com/royalty-free-vector/cute-game-background-of-mountains-and-grass-vector-9827642
 
 #### Acknowledgements ####
 - To freja! Who taught me the game!

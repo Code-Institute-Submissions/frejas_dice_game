@@ -177,7 +177,7 @@ function gamePlay() {
         //Get dice highest value for the roll of the dice
         diceValue = $(this).val();
         //show new dice
-        activeDice.src = "static/dice_img/d-" + diceValue + ".jpg";
+        activeDice.src = "static/images/d-" + diceValue + ".jpg";
         //roll the dice if clicked
         rollDice();
         showPercentage();
@@ -187,7 +187,7 @@ function gamePlay() {
     //change dice on mouse enter
     $('.dice').on('mouseenter', function() {
         diceValue = $(this).val();
-        activeDice.src = "static/dice_img/d-" + diceValue + ".jpg";
+        activeDice.src = "static/images/d-" + diceValue + ".jpg";
         activeDice.setAttribute("value", diceValue);
 
         if (player1Help.checked && player2Score > 0) {
@@ -254,7 +254,7 @@ function newdice() {
 
     //If the array is empty, 'if' statement to stop blank img
     if (diceOptionsPlayer1.length > 0) {
-        startDice1.src = "static/dice_img/d-" + randomStartDice1 + ".jpg";
+        startDice1.src = "static/images/d-" + randomStartDice1 + ".jpg";
         //set dice value from random starting dice
         startDice1.setAttribute("value", randomStartDice1);
         diceValue = randomStartDice1;
@@ -265,7 +265,7 @@ function newdice() {
 
     //If the array is empty, if statement to stop blank img
     if (diceOptionsPlayer2.length > 0) {
-        startDice2.src = "static/dice_img/d-" + randomStartDice2 + ".jpg";
+        startDice2.src = "static/images/d-" + randomStartDice2 + ".jpg";
         //set dice value from random starting dice
         startDice2.setAttribute("value", randomStartDice2);
         diceValue = randomStartDice2;
@@ -358,7 +358,7 @@ function rollDice() {
 function history() {
     let newHistory = document.createElement('div');
     newHistory.classList.add("histroy");
-    newHistory.innerHTML = '<div class="row histroyRow" id="histroyRow"><!--Round counter--><div class="col-2 diceHistory roundCounter"><h4>' + roundValue + ':</h4></div><!--Player 1 score and used dice--><div class="col-4 diceHistory id="player1History"><button class="dice" id="d' + player1Dice + '"value="' + player1Dice + '"><img src="static/dice_img/d-' + player1Dice + '.jpg"/></button><div id="player1Score' + roundValue + '"> ' + player1Score + '</div></div><!--Player 2 score and used dice--><div class="col-4 diceHistory id="player2History"><button class="dice" id="d' + player2Dice + ' value="' + player2Dice + '><img src="static/dice_img/d-' + player2Dice + '.jpg"/></button><div id="player2Score' + roundValue + '"> ' + player2Score + '</div></div></div><br>';
+    newHistory.innerHTML = '<div class="row histroyRow" id="histroyRow"><!--Round counter--><div class="col-2 diceHistory roundCounter"><h4>' + roundValue + ':</h4></div><!--Player 1 score and used dice--><div class="col-4 diceHistory id="player1History"><button class="dice" id="d' + player1Dice + '"value="' + player1Dice + '"><img src="static/images/d-' + player1Dice + '.jpg"/></button><div id="player1Score' + roundValue + '"> ' + player1Score + '</div></div><!--Player 2 score and used dice--><div class="col-4 diceHistory id="player2History"><button class="dice" id="d' + player2Dice + ' value="' + player2Dice + '><img src="static/images/d-' + player2Dice + '.jpg"/></button><div id="player2Score' + roundValue + '"> ' + player2Score + '</div></div></div><br>';
     document.getElementById("history").appendChild(newHistory);
 }
 

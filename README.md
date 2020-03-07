@@ -35,7 +35,7 @@ As the programmer, I wanted to showcase a wide variety of skills I have learnt t
 * Applying mouse over and click functions for DOM manipulation, applying functions when needed.
 * Show case 'for loops' , 'if functions' and 'case functions' as well as creating a unique percentage function.
 
-
+### [Link to MockUps](https://github.com/brendanoshea84/frejas_dice_game/tree/master/testing/Mockups) ###
 ## Features ##
 As this is for a 'Milestone Project' I wanted to show case a variety of new skills and apply them in different scenarios.
 
